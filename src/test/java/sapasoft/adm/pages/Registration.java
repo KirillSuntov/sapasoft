@@ -1,5 +1,7 @@
 package sapasoft.adm.pages;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selectors;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -7,8 +9,7 @@ import sapasoft.adm.testconfigs.BaseSetings;
 
 import java.io.File;
 
-import static com.codeborne.selenide.Condition.enabled;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -51,8 +52,15 @@ public class Registration extends BaseSetings {
     @Step("Выбрать модуль")
     public void chooseModule(String module) {
         $(By.xpath("//label[text()=\"Подсистема/модуль\"]/../..//input")).click();
-        $(byText(""+module+"")).scrollIntoView(false);
-        $(By.xpath("//span[@title=\""+module+"\"]")).click();
+        int n=50;
+        int i=0;
+        while (element(Selectors.byXpath("//span[contains(@title,\"" + module + "\")]")).is(Condition.not(visible))) {
+            $(By.xpath("//label[text()=\"Подсистема/модуль\"]/../..//input")).sendKeys(Keys.ARROW_DOWN);
+            i=i+1;
+            if(i==n)break;
+        }
+        $(By.xpath("//span[contains(@title,\"" + module + "\")]")).click();
+        $(By.xpath("//span[contains(@title,\"" + module + "\")]")).shouldBe(visible);
         $(By.xpath("//label[text()=\"Подсистема/модуль\"]/../..//input")).click();
     }
 
@@ -70,5 +78,15 @@ public class Registration extends BaseSetings {
     @Step("Нажать кнопку отмена")
     public void pressCancel() {
         $(By.xpath("//button[@class=\"ant-btn administration__button-white\"]")).click();
+    }
+
+    @Step("Вывод сообщения, что пользователь не зарегистрирован в системе кадров")
+    public void checkThatUserNotExist() {
+        $(By.xpath("//div[@class=\"ant-notification-notice-message\"]")).shouldHave(text("Данный сотрудник не зарегистрирован в системе кадров"));
+    }
+
+    @Step("Вывод сообщения, что пользователь уже зарегистрирован")
+    public void checkThatUserExist() {
+        $(By.xpath("//div[@class=\"ant-notification-notice-message\"]")).shouldHave(text("Заявка была одобрена"));
     }
 }

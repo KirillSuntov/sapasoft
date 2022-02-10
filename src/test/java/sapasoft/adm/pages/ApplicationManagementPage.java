@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ApplicationManagementPage {
-    @DisplayName("Открываем раздел \"Управление заявками\"")
+    @Step("Открываем раздел \"Управление заявками\"")
     public void open(){
         $(By.xpath("//div[@class='antd-pro-components-menu-page-index-items']/a[5]")).click();
          $(By.xpath("//div/h1")).shouldHave(text("Управление заявками"));
@@ -18,6 +18,7 @@ public class ApplicationManagementPage {
 
     @Step("Открыть заявку для просмотра")
     public void openApplication(){
+        $(By.xpath("//tbody/tr[1]/td[2]")).shouldBe(exist);
         $(By.xpath("//tbody/tr[1]")).click();
         $(By.xpath("//div[@class=\"ant-modal-body\"]")).shouldBe(visible);
 

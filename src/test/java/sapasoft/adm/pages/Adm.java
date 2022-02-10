@@ -50,8 +50,23 @@ public class Adm extends BaseSetings {
         return additionalApplicationPage;
     }
 
-    public StaticalReportPage staticalReport (){
-        StaticalReportPage staticalReportPage = new StaticalReportPage();
-        return staticalReportPage;
+    public StatisticReportUserPage statisticUserReport (){
+        StatisticReportUserPage statisticReportUserPage = new StatisticReportUserPage();
+        return statisticReportUserPage;
+    }
+
+    public StatisticReportRolesPage statisticRolesReport (){
+        StatisticReportRolesPage statisticReportRolesPage = new StatisticReportRolesPage();
+        return statisticReportRolesPage;
+    }
+
+    public StatisticReportRulesPage statisticRulesReport (){
+        StatisticReportRulesPage statisticReportRulesPage = new StatisticReportRulesPage();
+        return statisticReportRulesPage;
+    }
+
+    public StatisticReportStatisticPage statisticReportStatistic (){
+        StatisticReportStatisticPage statisticReportStatisticPage = new StatisticReportStatisticPage();
+        return statisticReportStatisticPage;
     }
 }

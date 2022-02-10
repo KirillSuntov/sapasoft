@@ -19,10 +19,10 @@ public class Auth extends BaseSetings {
         open("/");
         $(By.xpath("//input[@id=\"username\"]")).setValue(login);
         $(By.xpath("//input[@class ='btn-login-page']")).click();
-        // $(By.xpath("//button[@id=\"proceed-button\"]")).click();
+       // $(By.xpath("//button[@id=\"proceed-button\"]")).click();
         $(By.xpath("//input[@name=\"password\"]")).setValue(password);
         $(By.xpath("//input[@id=\"kc-login\"]")).click();
-        // $(By.xpath("//button[@id=\"proceed-button\"]")).click();
+       // $(By.xpath("//button[@id=\"proceed-button\"]")).click();
         //refresh();
         $(By.xpath("//h1[text()=\"Главная\"]")).shouldBe(Condition.visible);
         $(By.xpath("//div[text()=\"Администрирование и мониторинг\"]")).click();
