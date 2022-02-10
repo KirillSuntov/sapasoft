@@ -19,7 +19,7 @@ import java.io.IOException;
 public class Test_api_post
 {
 
-    @Test
+//    @Test
     @Step("Отправка post запроса /mgu/nds/save-nz")
     public static void isnaregndsintegration() throws UnirestException {
 
