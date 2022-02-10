@@ -1,0 +1,15 @@
+sapasoft\adm\pages\Adm.class
+sapasoft\adm\IsnaRegNdsIntegrationTest.class
+sapasoft\adm\pages\AdditionalApplicationPage.class
+sapasoft\adm\testconfigs\BaseSetings.class
+sapasoft\adm\pages\Auth.class
+adm\CheckNdsRequestDto$data.class
+adm\CheckNdsRequestDto.class
+sapasoft\adm\Test_api_postTest.class
+sapasoft\adm\pages\Registration.class
+sapasoft\adm\pages\RolesGroupsManagmentPage.class
+sapasoft\adm\pages\ApplicationManagementPage.class
+sapasoft\adm\pages\RightsManagment.class
+sapasoft\adm\pages\StaticalReportPage.class
+sapasoft\adm\pages\RolesManagment.class
+sapasoft\adm\pages\UsersManagmentPage.class
