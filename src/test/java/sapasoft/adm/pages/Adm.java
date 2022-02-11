@@ -69,4 +69,10 @@ public class Adm extends BaseSetings {
         StatisticReportStatisticPage statisticReportStatisticPage = new StatisticReportStatisticPage();
         return statisticReportStatisticPage;
     }
+
+
+    public NdsJournalPage ndsJournal (){
+        NdsJournalPage ndsJournalPage = new NdsJournalPage();
+        return ndsJournalPage;
+    }
 }

@@ -1,11 +1,15 @@
 package sapasoft.adm.pages;
-
+import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.selector.ByText;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import sapasoft.adm.testconfigs.BaseSetings;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.by;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -25,8 +29,9 @@ public class Auth extends BaseSetings {
        // $(By.xpath("//button[@id=\"proceed-button\"]")).click();
         //refresh();
         $(By.xpath("//h1[text()=\"Главная\"]")).shouldBe(Condition.visible);
-        $(By.xpath("//div[text()=\"Администрирование и мониторинг\"]")).click();
-        $(By.xpath("//div/h1")).shouldHave(Condition.text("Администрирование и мониторинг"));
+        $(By.xpath("//div[text()=\"АРМ ОГД\"]")).click();
+      $(byText("Регистрация НП и ККМ")).click();
+        pause(5000);
         return this;
     }
 

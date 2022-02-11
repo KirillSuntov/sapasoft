@@ -9,7 +9,7 @@ import sapasoft.adm.pages.Adm;
 import sapasoft.adm.testconfigs.BaseSetings;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@DisplayName("UC.ISNA.ARM.REG.OBR.NDS.02.Автоматическое формирование решения ОГД")
+@DisplayName("Автоматическое формирование решения ОГД")
 
 public class IsnaRegNdsIntegrationTest extends BaseSetings {
 
@@ -23,6 +23,8 @@ public class IsnaRegNdsIntegrationTest extends BaseSetings {
 
         Adm adm =new Adm();
         adm.logIn(login, password);
+        adm.ndsJournal().open();
+        adm.ndsJournal().chooseMessage("430216434014");
 
     }
 
