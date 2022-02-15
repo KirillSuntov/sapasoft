@@ -15,13 +15,13 @@ import sapasoft.adm.testconfigs.BaseSetings;
 public class IsnaRegNdsIntegrationTest extends BaseSetings {
 
     @Test
-    @DisplayName("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является умершим (объявленным умершим)")
+    @DisplayName("Налогоплательщик является действующим плательщиком НДС")
     public void  TestRegNds() throws UnirestException {
 
 
         JSONObject Jarr = new JSONObject(Test_api_post.isnaregndsintegration());
         System.out.println(Jarr);
-        Test_api_post.isnaregndsintegrationResponseCheсk(Jarr,"Сообщение с указанным идентификатором");
+        Test_api_post.isnaregndsintegrationResponseCheсk(Jarr,"Налогоплательщик является действующим плательщиком НДС");
 
         Adm adm =new Adm();
         adm.logIn(login, password);
