@@ -36,7 +36,7 @@ public class Test_api_post
        return response.getBody();
     }
 
-    @Step("Проверка ответа, ожидаемый ответ:[1]")
+    @Step("Проверка ответа, ожидаемый ответ:{1}")
     public static Boolean isnaregndsintegrationResponseCheсk(JSONObject Response, String expectedResponse) throws UnirestException {
         Boolean Check=false;
 
