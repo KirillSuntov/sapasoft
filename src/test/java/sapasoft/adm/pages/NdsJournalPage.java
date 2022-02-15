@@ -9,7 +9,7 @@ import org.openqa.selenium.Keys;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.element;
 
@@ -33,6 +33,11 @@ public class NdsJournalPage {
 //
     @Step("Выбрать запись в журнале по ИИН/БИН")
     public void chooseMessage(String IinBin) {
+
+        $(By.id("searchByParameters")).click();
+        $(By.id("searchByParameters"));
+
+
 
     }
 //
