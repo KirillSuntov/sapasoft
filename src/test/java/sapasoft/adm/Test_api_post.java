@@ -37,13 +37,13 @@ public class Test_api_post
     }
 
     @Step("Отправка post запроса /mgu/nds/check-taxpayer")
-    public static String CheckTaxpayer() throws UnirestException {
+    public static String CheckTaxpayer(String bodyJSON) throws UnirestException {
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.post("http://arm.sapasoft.kz/services/isnaregndsintegration/open-api/mgu/nds/check-taxpayer")
                 .header("content-type", "application/json")
                 .header("cache-control", "no-cache")
                 .header("postman-token", "0a1e90b4-f9b1-bf71-2685-1fbe1ac2064a")
-                .body("{ \"iinBin\": \"484440016661\", \"ogdCode\": \"6205\", \"taxpayerType\": \"UL\", \"operationType\": \"REGISTRATION\" }")
+                .body(bodyJSON)
                 .asString();
 
 //        System.out.println(response.getStatus());

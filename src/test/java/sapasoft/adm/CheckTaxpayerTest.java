@@ -19,9 +19,14 @@ public class CheckTaxpayerTest extends BaseSetings {
     @DisplayName("У налогоплательщика отсутствует регистрационный учет по месту нахождения в указанном органе государственных доходов")
     public void  TestRegNds() throws UnirestException {
 
-        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer());
+
+
+        String bodyJSON="{ \"iinBin\": \"484440016661\", \"ogdCode\": \"6205\", \"taxpayerType\": \"UL\", \"operationType\": \"REGISTRATION\" }";
+        String expectedResponse="У налогоплательщика отсутствует регистрационный учет по месту нахождения в указанном органе государственных доходов";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
 //        System.out.println(Jarr);
-        Test_api_post.checkTaxpayerResponseCheck(Response,"У налогоплательщика отсутствует регистрационный учет по месту нахождения в указанном органе государственных доходов");
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
 //
 //        Adm adm =new Adm();
 //        adm.logIn(login, password);
