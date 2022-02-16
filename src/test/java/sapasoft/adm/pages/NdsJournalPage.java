@@ -48,7 +48,7 @@ public class NdsJournalPage extends BaseSetings {
 
         adm.ndsJournal().chooseMessage("430216434014");
         $$(By.className("mb-disable")).get(1).shouldBe(text("Регистрационные сведения")).click();
-        $(byText(expectedRejectCause)).shouldBe(visible);
+        $(byText(expectedRejectCause)).shouldBe(visible).click();
 
     }
 //
