@@ -11,6 +11,8 @@ import sapasoft.adm.testconfigs.BaseSetings;
 
 import java.io.IOException;
 
+import static com.codeborne.selenide.Selenide.screenshot;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @DisplayName("НЗ о регистрационном учете по НДС")
 
@@ -27,7 +29,9 @@ public class IsnaRegNdsIntegrationTest extends BaseSetings {
         Adm adm =new Adm();
 
         adm.ndsJournal().checkCertificate("Выдано свидетельство","430216434014");
-        screenshot1("Скрин последней страницы");
+
+        screenshot("123");
+//        screenshot1("Скрин последней страницы");
 
         pause(1000);
     }
