@@ -185,4 +185,14 @@ public class CheckTaxpayerTest extends BaseSetings {
         Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
     }
 
+    @Test
+    @DisplayName("Налогоплательщик является действующим плательщиком НДС")
+    public void TestCheckTaxpayerCase13() throws UnirestException {
+
+        String bodyJSON="{\"iinBin\":\"810202450159\",\"ogdCode\":\"6205\",\"taxpayerType\":\"IP\",\"operationType\":\"REGISTRATION\"}";
+        String expectedRejectCause="Налогоплательщик является действующим плательщиком НДС";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
+    }
 }
