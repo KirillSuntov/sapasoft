@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.Assert;
 import org.junit.Test;
 
 
@@ -76,6 +77,7 @@ public class Test_api_post
         String rejectCause = String.valueOf(messages.getJSONObject(0).get("rejectCause"));
         System.out.println("rejectCause:::" +rejectCause);
         if (rejectCause.equals(expectedResponse)) {Check=true;}
+        else {Assert.fail("Ответ не соответствует ожидаемому");}
         System.out.println(Check +"::::" +rejectCause);
 
         return Check;

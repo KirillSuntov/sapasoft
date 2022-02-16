@@ -22,7 +22,7 @@ public class CheckTaxpayerTest extends BaseSetings {
 
 
         String bodyJSON="{ \"iinBin\": \"484440016661\", \"ogdCode\": \"6205\", \"taxpayerType\": \"UL\", \"operationType\": \"REGISTRATION\" }";
-        String expectedResponse="У налогоплательщика отсутствует регистрационный учет по месту нахождения в указанном органе государственных доходов";
+        String expectedResponse="У налогоплательщика отсутствует регистрационный учет по мецсту нахождения в указанном органе государственных доходов";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
 //        System.out.println(Jarr);
