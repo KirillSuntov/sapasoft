@@ -40,7 +40,18 @@ public class NdsJournalPage extends BaseSetings {
         $(by("data-row-key","1")).click();
     }
 
-    @Step("Фронт. Проверка ответа по постановке на учет по НДС. Ожидаемый ответ: {0}")
+    @Step("Выбрать запись в журнале НДС, вкладка \"Плательшики НДС\" по ИИН/БИН")
+    public void chooseCertificate(String IinBin) {
+
+
+        $(byText("Плательщики НДС")).click();
+        $(by("data-row-key","1")).click();
+        $(byText("НЗ о регистрационном учете по НДС")).shouldBe(visible);
+        $(byText("Выдано свидетельство")).shouldBe(visible);
+
+    }
+
+    @Step("Фронт. Проверка ответа в журнале сообщений по постановке на учет по НДС. Ожидаемый ответ: {0}")
     public void checkMessage(String expectedRejectCause, String IinBin) {
         Adm adm =new Adm();
         adm.logIn(login, password);
@@ -48,11 +59,20 @@ public class NdsJournalPage extends BaseSetings {
 
         adm.ndsJournal().chooseMessage(IinBin);
         $$(By.className("mb-disable")).get(1).shouldBe(text("Регистрационные сведения")).click();
-//        $(By.className("antd-pro-components-modal-index-modalFooter")).scrollTo();
-
         $(byText(expectedRejectCause)).shouldBe(visible);
-
     }
+
+    @Step("Фронт. Проверка ответа в журнале сообщений по постановке на учет по НДС. Ожидаемый ответ: {0}")
+    public void checkCertificate(String expectedCause, String IinBin) {
+        Adm adm =new Adm();
+        adm.logIn(login, password);
+        adm.ndsJournal().open();
+
+        adm.ndsJournal().chooseCertificate(IinBin);
+//        $$(By.className("mb-disable")).get(1).shouldBe(text("Регистрационные сведения")).click();
+//        $(byText(expectedCause)).shouldBe(visible);
+    }
+
 //
 //    @Step("Прикрепить файл")
 //    public void uploadFile() {
