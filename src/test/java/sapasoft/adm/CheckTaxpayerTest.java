@@ -22,9 +22,9 @@ public class CheckTaxpayerTest extends BaseSetings {
                 "\"ogdCode\":\"6205\",\n" +
                 "\"taxpayerType\":\"UL\",\n" +
                 "\"operationType\":\"REGISTRATION\"}";
-        String expectedResponse="";
+        String expectedRejectCause="null";
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
-        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
 
     }
 
@@ -33,9 +33,9 @@ public class CheckTaxpayerTest extends BaseSetings {
     public void TestCheckTaxpayerCase1() throws UnirestException {
 
         String bodyJSON="{ \"iinBin\": \"484440016661\", \"ogdCode\": \"6205\", \"taxpayerType\": \"UL\", \"operationType\": \"REGISTRATION\" }";
-        String expectedResponse="У налогоплательщика отсутствует регистрационный учет по месту нахождения в указанном органе государственных доходов";
+        String expectedRejectCause="У налогоплательщика отсутствует регистрационный учет по месту нахождения в указанном органе государственных доходов";
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
-        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
 
     }
 
@@ -49,10 +49,10 @@ public class CheckTaxpayerTest extends BaseSetings {
                 "    \"taxpayerType\": \"UL\",\n" +
                 "    \"operationType\": \"REGISTRATION\"\n" +
                 "}";
-        String expectedResponse="Некорректно указана категория налогоплательщика";
+        String expectedRejectCause="Некорректно указана категория налогоплательщика";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
-        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
     }
 
     @Test
@@ -65,10 +65,10 @@ public class CheckTaxpayerTest extends BaseSetings {
                 "    \"taxpayerType\": \"IP\",\n" +
                 "    \"operationType\": \"REGISTRATION\"\n" +
                 "}";
-        String expectedResponse="Налогоплательщик не найден";
+        String expectedRejectCause="Налогоплательщик не найден";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
-        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
     }
 
     @Test
@@ -76,10 +76,10 @@ public class CheckTaxpayerTest extends BaseSetings {
     public void TestCheckTaxpayerCase4() throws UnirestException {
 
         String bodyJSON="{ \"iinBin\": \"484440016661\", \"ogdCode\": \"6203\", \"taxpayerType\": \"UL\", \"operationType\": \"REGISTRATION\" }";
-        String expectedResponse="Налогоплательщику присвоена высокая степень риска";
+        String expectedRejectCause="Налогоплательщику присвоена высокая степень риска";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
-        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
     }
 
     @Test
@@ -90,10 +90,10 @@ public class CheckTaxpayerTest extends BaseSetings {
                 "\"ogdCode\":\"6203\",\n" +
                 "\"taxpayerType\":\"UL\",\n" +
                 "\"operationType\":\"REGISTRATION\"}";
-        String expectedResponse="Налогоплательщик входит в категорию налогоплательщиков, подлежащих обязательной постановке на регистрационный учет по НДС";
+        String expectedRejectCause="Налогоплательщик входит в категорию налогоплательщиков, подлежащих обязательной постановке на регистрационный учет по НДС";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
-        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
     }
 
     @Test
@@ -106,26 +106,38 @@ public class CheckTaxpayerTest extends BaseSetings {
                 "    \"taxpayerType\": \"IP\",\n" +
                 "    \"operationType\": \"TEST\"\n" +
                 "}";
-        String expectedResponse="Тип операции не соответствует формату";
+        String expectedRejectCause="Тип операции не соответствует формату";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
-        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
     }
 
     @Test
-    @DisplayName("Тип операции не соответствует формату")
+    @DisplayName("Категория налогоплательщика не соответствует формату")
     public void TestCheckTaxpayerCase7() throws UnirestException {
 
-        String bodyJSON="{\n" +
-                "    \"iinBin\": \"038152444068\",\n" +
-                "    \"ogdCode\": \"6205\",\n" +
-                "    \"taxpayerType\": \"IP\",\n" +
-                "    \"operationType\": \"TEST\"\n" +
-                "}";
-        String expectedResponse="Тип операции не соответствует формату";
+        String bodyJSON="{\"iinBin\":\"771040008703\",\n" +
+                "\"ogdCode\":\"6205\",\n" +
+                "\"taxpayerType\":\"TEst\",\n" +
+                "\"operationType\":\"REGISTRATION\"}";
+        String expectedRejectCause="Категория налогоплательщика не соответствует формату";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
-        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
+    }
+
+    @Test
+    @DisplayName("Поле iinBin заполнено не корректно")
+    public void TestCheckTaxpayerCase8() throws UnirestException {
+
+        String bodyJSON="{\"iinBin\":\"\",\n" +
+                "\"ogdCode\":\"6205\",\n" +
+                "\"taxpayerType\":\"UL\",\n" +
+                "\"operationType\":\"REGISTRATION\"}";
+        String expectedRejectCause="Поле iinBin заполнено не корректно";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
     }
 
 }
