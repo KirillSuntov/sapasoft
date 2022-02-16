@@ -14,6 +14,19 @@ import sapasoft.adm.testconfigs.BaseSetings;
 @DisplayName("Проверка возможности постановки на учет по НДС")
 public class CheckTaxpayerTest extends BaseSetings {
 
+    @Test
+    @DisplayName("Позитивный тест кейс")
+    public void TestCheckTaxpayerCase() throws UnirestException {
+
+        String bodyJSON="{\"iinBin\":\"771040008703\",\n" +
+                "\"ogdCode\":\"6205\",\n" +
+                "\"taxpayerType\":\"UL\",\n" +
+                "\"operationType\":\"REGISTRATION\"}";
+        String expectedResponse="";
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+
+    }
 
     @Test
     @DisplayName("У налогоплательщика отсутствует регистрационный учет по месту нахождения в указанном органе государственных доходов")
@@ -78,6 +91,38 @@ public class CheckTaxpayerTest extends BaseSetings {
                 "\"taxpayerType\":\"UL\",\n" +
                 "\"operationType\":\"REGISTRATION\"}";
         String expectedResponse="Налогоплательщик входит в категорию налогоплательщиков, подлежащих обязательной постановке на регистрационный учет по НДС";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+    }
+
+    @Test
+    @DisplayName("Тип операции не соответствует формату")
+    public void TestCheckTaxpayerCase6() throws UnirestException {
+
+        String bodyJSON="{\n" +
+                "    \"iinBin\": \"038152444068\",\n" +
+                "    \"ogdCode\": \"6205\",\n" +
+                "    \"taxpayerType\": \"IP\",\n" +
+                "    \"operationType\": \"TEST\"\n" +
+                "}";
+        String expectedResponse="Тип операции не соответствует формату";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+    }
+
+    @Test
+    @DisplayName("Тип операции не соответствует формату")
+    public void TestCheckTaxpayerCase7() throws UnirestException {
+
+        String bodyJSON="{\n" +
+                "    \"iinBin\": \"038152444068\",\n" +
+                "    \"ogdCode\": \"6205\",\n" +
+                "    \"taxpayerType\": \"IP\",\n" +
+                "    \"operationType\": \"TEST\"\n" +
+                "}";
+        String expectedResponse="Тип операции не соответствует формату";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
         Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
