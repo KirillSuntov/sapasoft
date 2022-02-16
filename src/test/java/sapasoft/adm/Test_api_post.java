@@ -47,7 +47,7 @@ public class Test_api_post {
                 .asString();
 
         System.out.println(response.getStatus());
-        if (response.getStatus() == 200) {
+        if (response.getStatus() == 200 || response.getStatus() == 400) {
             return response.getBody();
         } else Assert.fail("Статус ответа: "+response.getStatus());
 //       System.out.println(response.getBody());
