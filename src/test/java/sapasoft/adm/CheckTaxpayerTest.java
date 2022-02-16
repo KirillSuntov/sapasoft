@@ -127,14 +127,59 @@ public class CheckTaxpayerTest extends BaseSetings {
     }
 
     @Test
-    @DisplayName("Поле iinBin заполнено не корректно")
+    @DisplayName("Сообщение не может быть обработано, так как обязательное поле iinBin не заполнено")
     public void TestCheckTaxpayerCase8() throws UnirestException {
 
         String bodyJSON="{\"iinBin\":\"\",\n" +
                 "\"ogdCode\":\"6205\",\n" +
                 "\"taxpayerType\":\"UL\",\n" +
                 "\"operationType\":\"REGISTRATION\"}";
-        String expectedRejectCause="Поле iinBin заполнено не корректно";
+        String expectedRejectCause="Сообщение не может быть обработано, так как обязательное поле iinBin не заполнено";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
+    }
+
+    @Test
+    @DisplayName("Сообщение не может быть обработано, так как обязательное поле ogdCode не заполнено")
+    public void TestCheckTaxpayerCase9() throws UnirestException {
+
+        String bodyJSON="{ \"iinBin\": \"500101300101\", \"ogdCode\": \"\", \"taxpayerType\": \"IP\", \"operationType\": \"REGISTRATION\" }";
+        String expectedRejectCause="Сообщение не может быть обработано, так как обязательное поле ogdCode не заполнено";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
+    }
+
+    @Test
+    @DisplayName("Сообщение не может быть обработано, так как обязательное поле taxpayerType не заполнено")
+    public void TestCheckTaxpayerCase10() throws UnirestException {
+
+        String bodyJSON="{ \"iinBin\": \"500101300101\", \"ogdCode\": \"6203\", \"taxpayerType\": \"\", \"operationType\": \"REGISTRATION\" }";
+        String expectedRejectCause="Сообщение не может быть обработано, так как обязательное поле taxpayerType не заполнено";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
+    }
+
+
+    @Test
+    @DisplayName("Сообщение не может быть обработано, так как обязательное поле operationType не заполнено")
+    public void TestCheckTaxpayerCase11() throws UnirestException {
+
+        String bodyJSON="{ \"iinBin\": \"500101300101\", \"ogdCode\": \"6203\", \"taxpayerType\": \"IP\", \"operationType\": \"\" }";
+        String expectedRejectCause="Сообщение не может быть обработано, так как обязательное поле operationType не заполнено";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
+    }
+
+    @Test
+    @DisplayName("Налогоплательщик не является действующим плательщиком НДС")
+    public void TestCheckTaxpayerCase12() throws UnirestException {
+
+        String bodyJSON="{ \"iinBin\": \"500101300101\", \"ogdCode\": \"6203\", \"taxpayerType\": \"IP\", \"operationType\": \"REGISTRATION\" }";
+        String expectedRejectCause="Налогоплательщик не является действующим плательщиком НДС";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
         Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
