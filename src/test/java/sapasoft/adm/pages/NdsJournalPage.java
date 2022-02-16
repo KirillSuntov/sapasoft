@@ -40,7 +40,7 @@ public class NdsJournalPage extends BaseSetings {
         $(by("data-row-key","1")).click();
     }
 
-    @Step("Проверка ответа по постановке на учет по НДС. Ожидаемый ответ: {0}")
+    @Step("Фронт. Проверка ответа по постановке на учет по НДС. Ожидаемый ответ: {0}")
     public void checkMessage(String expectedRejectCause) {
         Adm adm =new Adm();
         adm.logIn(login, password);
