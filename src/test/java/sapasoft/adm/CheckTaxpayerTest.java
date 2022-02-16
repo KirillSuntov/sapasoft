@@ -37,8 +37,50 @@ public class CheckTaxpayerTest extends BaseSetings {
                 "    \"operationType\": \"REGISTRATION\"\n" +
                 "}";
         String expectedResponse="Некорректно указана категория налогоплательщика";
+
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
         Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
-
     }
+
+    @Test
+    @DisplayName("Налогоплательщик не найден")
+    public void TestCheckTaxpayerCase3() throws UnirestException {
+
+        String bodyJSON="{\n" +
+                "    \"iinBin\": \"030824568823\",\n" +
+                "    \"ogdCode\": \"3020\",\n" +
+                "    \"taxpayerType\": \"IP\",\n" +
+                "    \"operationType\": \"REGISTRATION\"\n" +
+                "}";
+        String expectedResponse="Налогоплательщик не найден";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+    }
+
+    @Test
+    @DisplayName("Налогоплательщику присвоена высокая степень риска")
+    public void TestCheckTaxpayerCase4() throws UnirestException {
+
+        String bodyJSON="{ \"iinBin\": \"484440016661\", \"ogdCode\": \"6203\", \"taxpayerType\": \"UL\", \"operationType\": \"REGISTRATION\" }";
+        String expectedResponse="Налогоплательщику присвоена высокая степень риска";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+    }
+
+    @Test
+    @DisplayName("Налогоплательщик входит в категорию налогоплательщиков, подлежащих обязательной постановке на регистрационный учет по НДС")
+    public void TestCheckTaxpayerCase5() throws UnirestException {
+
+        String bodyJSON="{\"iinBin\":\"110640018230\",\n" +
+                "\"ogdCode\":\"6203\",\n" +
+                "\"taxpayerType\":\"UL\",\n" +
+                "\"operationType\":\"REGISTRATION\"}";
+        String expectedResponse="Налогоплательщик входит в категорию налогоплательщиков, подлежащих обязательной постановке на регистрационный учет по НДС";
+
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
+    }
+
 }
