@@ -23,12 +23,12 @@ public class Test_api_post {
 
     //    @Test
     @Step("Отправка post запроса /mgu/nds/save-nz")
-    public static String saveNz() throws UnirestException {
+    public static String ndsSaveNz(String bodyJSON) throws UnirestException {
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.post("http://arm.sapasoft.kz/services/isnaregndsintegration/open-api/mgu/nds/save-nz")
                 .header("Content-Type", "application/json")
                 .header("Cookie", "XSRF-TOKEN=c8eb295d-e5f2-447a-8354-bc606d699055")
-                .body("{\r\n    \"headers\": {\r\n        \"messageUid\": \"" + java.util.UUID.randomUUID() + "\",\r\n        \"messageCreatedDate\": \"2022-01-01 09:34:55\",\r\n        \"operationType\": \"REGISTRATION\"\r\n    },\r\n    \"businessData\": {\r\n        \"taxStatement\": {\r\n            \"registrationType\": 1,\r\n            \"type\": \"1\",\r\n            \"taxOrgCode\": \"6205\",\r\n            \"ndsNzReceiveDate\": \"2022-12-22\",\r\n            \"ndsNzIncomingDate\": \"2022-12-22\",\r\n            \"statementRegReason\": \"REQUIRED\"\r\n        },\r\n        \"taxpayerData\": {\r\n            \"taxpayerCode\": \"430216434014\",\r\n            \"taxpayerType\": \"IP\",\r\n            \"taxpayerName\": {\r\n                \"ru\": \"IP Власова ru\",\r\n                \"kk\": \"IP Власова kk\"\r\n            }\r\n        },\r\n        \"stateAuthorityMark\": {\r\n            \"registrationDate\": \"2020-10-19 19:34:55\",\r\n            \"taxOrgCode\": 6205,\r\n            \"applicationDate\": \"2020-10-19 19:34:55\",\r\n            \"fullName\": \"Иванов П.А.\",\r\n            \"applicantFullName\": \"Кузнецов В.А.\",\r\n            \"applicationNumber\": 10\r\n        }\r\n    }\r\n}")
+                .body(bodyJSON)
                 .asString();
 
 //        System.out.println(response.getStatus());
@@ -56,7 +56,7 @@ public class Test_api_post {
 
 
     @Step("Проверка ответа, ожидаемый ответ: {1}")
-    public static Boolean isnaregndsintegrationResponseCheck(JSONObject Response, String expectedResponse) throws UnirestException {
+    public static Boolean ndsSaveNzResponseCheck(JSONObject Response, String expectedRejectCause) throws UnirestException {
         Boolean Check = false;
         JSONObject result = new JSONObject(String.valueOf(Response.get("result")));
 //        System.out.println("result:::" +result);
