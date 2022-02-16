@@ -41,12 +41,12 @@ public class NdsJournalPage extends BaseSetings {
     }
 
     @Step("Фронт. Проверка ответа по постановке на учет по НДС. Ожидаемый ответ: {0}")
-    public void checkMessage(String expectedRejectCause) {
+    public void checkMessage(String expectedRejectCause, String IinBin) {
         Adm adm =new Adm();
         adm.logIn(login, password);
         adm.ndsJournal().open();
 
-        adm.ndsJournal().chooseMessage("430216434014");
+        adm.ndsJournal().chooseMessage(IinBin);
         $$(By.className("mb-disable")).get(1).shouldBe(text("Регистрационные сведения")).click();
 //        $(By.className("antd-pro-components-modal-index-modalFooter")).scrollTo();
 
