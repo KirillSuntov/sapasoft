@@ -49,7 +49,7 @@ public class Test_api_post {
         System.out.println(response.getStatus());
         if (response.getStatus() == 200) {
             return response.getBody();
-        } else Assert.fail("Сервис вернул не корректный ответ");
+        } else Assert.fail("Статус ответа: "+response.getStatus());
 //       System.out.println(response.getBody());
         return response.getBody();
     }
