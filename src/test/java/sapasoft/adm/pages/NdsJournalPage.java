@@ -40,7 +40,7 @@ public class NdsJournalPage extends BaseSetings {
         $(by("data-row-key","1")).click();
     }
 
-    @Step("Проверка ответа по постановке на учет по НДС. Ожидаемый ответ: {1}")
+    @Step("Проверка ответа по постановке на учет по НДС. Ожидаемый ответ: {0}")
     public void checkMessage(String expectedRejectCause) {
         Adm adm =new Adm();
         adm.logIn(login, password);
@@ -48,7 +48,9 @@ public class NdsJournalPage extends BaseSetings {
 
         adm.ndsJournal().chooseMessage("430216434014");
         $$(By.className("mb-disable")).get(1).shouldBe(text("Регистрационные сведения")).click();
-        $(byText(expectedRejectCause)).shouldBe(visible).click();
+//        $(By.className("antd-pro-components-modal-index-modalFooter")).scrollTo();
+
+        $(byText(expectedRejectCause)).shouldBe(visible);
 
     }
 //

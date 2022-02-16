@@ -55,23 +55,23 @@ public class Test_api_post {
     }
 
 
-    @Step("Проверка ответа, ожидаемый ответ: {1}")
+    @Step("Ожидаемый ответ: {1}")
     public static Boolean ndsSaveNzResponseCheck(JSONObject Response, String expectedRejectCause) throws UnirestException {
         Boolean Check = false;
         JSONObject result = new JSONObject(String.valueOf(Response.get("result")));
-//        System.out.println("result:::" +result);
+        System.out.println("result:::" +result);
         JSONArray errors = new JSONArray(String.valueOf(result.get("errors")));
-//        System.out.println("errors:::" +errors);
-        String errorCode = String.valueOf(errors.getJSONObject(0).get("errorCode"));
-        if (errorCode.equals("is.active.ndspayzer")) {
+        System.out.println("errors:::" +errors);
+        String msgRu = String.valueOf(errors.getJSONObject(0).get("msgRu"));
+        if (msgRu.equals(expectedRejectCause)) {
             Check = true;
-        }
+        } else {Assert.fail("Ответ не соответствует ожидаемому");}
 //        System.out.println(Check +"::::" +errorCode);
 
         return Check;
     }
 
-    @Step("Проверка ответа, ожидаемый ответ: {1}")
+    @Step("Ожидаемый ответ: {1}")
     public static Boolean checkTaxpayerResponseCheck(JSONObject Response, String expectedRejectCause) throws UnirestException {
         Boolean Check = false;
 //        JSONObject result = new JSONObject(String.valueOf(Response.get("result")));
