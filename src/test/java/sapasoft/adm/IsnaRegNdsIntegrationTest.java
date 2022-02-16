@@ -31,7 +31,7 @@ public class IsnaRegNdsIntegrationTest extends BaseSetings {
         adm.ndsJournal().checkCertificate("Выдано свидетельство","430216434014");
 
         screenshot("123");
-//        screenshot1("Скрин последней страницы");
+        screenshot1("Скрин последней страницы");
 
         pause(1000);
     }
