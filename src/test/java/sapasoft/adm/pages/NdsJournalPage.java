@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selectors;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import sapasoft.adm.testconfigs.BaseSetings;
 
 import java.io.File;
 
@@ -12,7 +13,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class NdsJournalPage {
+public class NdsJournalPage extends BaseSetings {
 
 
     @Step("Открыть раздел Журнал НДС")
@@ -41,9 +42,13 @@ public class NdsJournalPage {
 
     @Step("Проверка ответа по постановке на учет по НДС. Ожидаемый ответ: {1}")
     public void checkMessage(String expectedRejectCause) {
+        Adm adm =new Adm();
+        adm.logIn(login, password);
+        adm.ndsJournal().open();
 
+        adm.ndsJournal().chooseMessage("430216434014");
         $$(By.className("mb-disable")).get(1).shouldBe(text("Регистрационные сведения")).click();
-
+        $(byText(expectedRejectCause)).shouldBe(visible);
 
     }
 //

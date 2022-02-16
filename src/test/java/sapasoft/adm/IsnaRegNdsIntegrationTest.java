@@ -24,10 +24,7 @@ public class IsnaRegNdsIntegrationTest extends BaseSetings {
         Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
 
         Adm adm =new Adm();
-        adm.logIn(login, password);
-        adm.ndsJournal().open();
 
-        adm.ndsJournal().chooseMessage("430216434014");
         adm.ndsJournal().checkMessage("Налогоплательщик является действующим плательщиком НДС");
         pause(5000);
 
