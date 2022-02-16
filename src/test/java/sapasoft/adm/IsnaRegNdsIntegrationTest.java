@@ -27,6 +27,7 @@ public class IsnaRegNdsIntegrationTest extends BaseSetings {
         adm.ndsJournal().open();
 
         adm.ndsJournal().chooseMessage("430216434014");
+        adm.ndsJournal().checkMessage("Налогоплательщик является действующим плательщиком НДС");
         pause(5000);
 
     }

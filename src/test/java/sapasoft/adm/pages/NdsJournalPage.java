@@ -10,8 +10,7 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.element;
+import static com.codeborne.selenide.Selenide.*;
 
 public class NdsJournalPage {
 
@@ -34,9 +33,16 @@ public class NdsJournalPage {
     @Step("Выбрать запись в журнале по ИИН/БИН")
     public void chooseMessage(String IinBin) {
 
-        $(By.id("searchByParameters")).click();
-        $(By.id("searchByParameters"));
+        $(By.className("ant-select-selection-overflow")).click();
+        $(By.className("ant-select-selection-search-input")).sendKeys(IinBin);
+        $(By.className("ant-select-selection-search-input")).sendKeys(Keys.ENTER);
+        $(by("data-row-key","1")).click();
+    }
 
+    @Step("Проверка ответа по постановке на учет по НДС. Ожидаемый ответ: {1}")
+    public void checkMessage(String expectedRejectCause) {
+
+        $$(By.className("mb-disable")).get(1).shouldBe(text("Регистрационные сведения")).click();
 
 
     }
