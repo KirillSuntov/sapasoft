@@ -43,7 +43,6 @@ public class NdsJournalPage extends BaseSetings {
     @Step("Выбрать запись в журнале НДС, вкладка \"Плательшики НДС\" по ИИН/БИН")
     public void chooseCertificate(String IinBin) {
 
-
         $(byText("Плательщики НДС")).click();
         $(by("data-row-key","1")).click();
         $(byText("НЗ о регистрационном учете по НДС")).shouldBe(visible);
