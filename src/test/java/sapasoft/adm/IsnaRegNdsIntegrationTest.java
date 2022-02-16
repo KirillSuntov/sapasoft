@@ -18,10 +18,9 @@ public class IsnaRegNdsIntegrationTest extends BaseSetings {
     @DisplayName("Налогоплательщик является действующим плательщиком НДС")
     public void  TestRegNds() throws UnirestException {
 
-
-        JSONObject Jarr = new JSONObject(Test_api_post.isnaregndsintegration());
-        System.out.println(Jarr);
-        Test_api_post.isnaregndsintegrationResponseCheсk(Jarr,"Налогоплательщик является действующим плательщиком НДС");
+        JSONObject Response = new JSONObject(Test_api_post.saveNz());
+//        System.out.println(Jarr);
+        Test_api_post.isnaregndsintegrationResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
 
         Adm adm =new Adm();
         adm.logIn(login, password);

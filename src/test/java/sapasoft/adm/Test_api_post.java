@@ -23,7 +23,7 @@ public class Test_api_post
 
 //    @Test
     @Step("Отправка post запроса /mgu/nds/save-nz")
-    public static String isnaregndsintegration() throws UnirestException {
+    public static String saveNz() throws UnirestException {
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.post("http://arm.sapasoft.kz/services/isnaregndsintegration/open-api/mgu/nds/save-nz")
                 .header("Content-Type", "application/json")
@@ -36,22 +36,51 @@ public class Test_api_post
        return response.getBody();
     }
 
+    @Step("Отправка post запроса /mgu/nds/check-taxpayer")
+    public static String CheckTaxpayer() throws UnirestException {
+        Unirest.setTimeouts(0, 0);
+        HttpResponse<String> response = Unirest.post("http://arm.sapasoft.kz/services/isnaregndsintegration/open-api/mgu/nds/check-taxpayer")
+                .header("content-type", "application/json")
+                .header("cache-control", "no-cache")
+                .header("postman-token", "0a1e90b4-f9b1-bf71-2685-1fbe1ac2064a")
+                .body("{ \"iinBin\": \"484440016661\", \"ogdCode\": \"6205\", \"taxpayerType\": \"UL\", \"operationType\": \"REGISTRATION\" }")
+                .asString();
+
+//        System.out.println(response.getStatus());
+//       System.out.println(response.getBody());
+        return response.getBody();
+    }
+
+
     @Step("Проверка ответа, ожидаемый ответ: {1}")
-    public static Boolean isnaregndsintegrationResponseCheсk(JSONObject Response, String expectedResponse) throws UnirestException {
+    public static Boolean isnaregndsintegrationResponseCheck(JSONObject Response, String expectedResponse) throws UnirestException {
         Boolean Check=false;
-
         JSONObject result = new JSONObject(String.valueOf(Response.get("result")));
-        System.out.println("result:::" +result);
-
+//        System.out.println("result:::" +result);
         JSONArray errors = new JSONArray(String.valueOf(result.get("errors")));
-
-        System.out.println("errors:::" +errors);
+//        System.out.println("errors:::" +errors);
         String errorCode = String.valueOf(errors.getJSONObject(0).get("errorCode"));
         if (errorCode.equals("is.active.ndspayzer")) {Check=true;}
-        System.out.println(Check +"::::" +errorCode);
+//        System.out.println(Check +"::::" +errorCode);
 
         return Check;
     }
+
+    @Step("Проверка ответа, ожидаемый ответ: {1}")
+    public static Boolean checkTaxpayerResponseCheck(JSONObject Response, String expectedResponse) throws UnirestException {
+        Boolean Check=false;
+//        JSONObject result = new JSONObject(String.valueOf(Response.get("result")));
+//        System.out.println("result:::" +result);
+        JSONArray messages = new JSONArray(String.valueOf(Response.get("messages")));
+        System.out.println("messages:::" +messages);
+        String rejectCause = String.valueOf(messages.getJSONObject(0).get("rejectCause"));
+        System.out.println("rejectCause:::" +rejectCause);
+        if (rejectCause.equals(expectedResponse)) {Check=true;}
+        System.out.println(Check +"::::" +rejectCause);
+
+        return Check;
+    }
+
 
 
 }
