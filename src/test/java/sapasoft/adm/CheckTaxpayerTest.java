@@ -17,23 +17,28 @@ public class CheckTaxpayerTest extends BaseSetings {
 
     @Test
     @DisplayName("У налогоплательщика отсутствует регистрационный учет по месту нахождения в указанном органе государственных доходов")
-    public void  TestRegNds() throws UnirestException {
-
-
+    public void TestCheckTaxpayerCase1() throws UnirestException {
 
         String bodyJSON="{ \"iinBin\": \"484440016661\", \"ogdCode\": \"6205\", \"taxpayerType\": \"UL\", \"operationType\": \"REGISTRATION\" }";
-        String expectedResponse="У налогоплательщика отсутствует регистрационный учет по мецсту нахождения в указанном органе государственных доходов";
-
+        String expectedResponse="У налогоплательщика отсутствует регистрационный учет по месту нахождения в указанном органе государственных доходов";
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
-//        System.out.println(Jarr);
         Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
-//
-//        Adm adm =new Adm();
-//        adm.logIn(login, password);
-//        adm.ndsJournal().open();
-//
-//        adm.ndsJournal().chooseMessage("430216434014");
-//        pause(5000);
+
+    }
+
+    @Test
+    @DisplayName("Некорректно указана категория налогоплательщика")
+    public void TestCheckTaxpayerCase2() throws UnirestException {
+
+        String bodyJSON="{\n" +
+                "    \"iinBin\": \"991040006025\",\n" +
+                "    \"ogdCode\": \"6205\",\n" +
+                "    \"taxpayerType\": \"UL\",\n" +
+                "    \"operationType\": \"REGISTRATION\"\n" +
+                "}";
+        String expectedResponse="Некорректно указана категория налогоплательщика";
+        JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
+        Test_api_post.checkTaxpayerResponseCheck(Response,expectedResponse);
 
     }
 }
