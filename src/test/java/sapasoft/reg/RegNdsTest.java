@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.screenshot;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @DisplayName("НЗ о регистрационном учете по НДС")
 
-public class IsnaRegNdsIntegrationTest extends BaseSetings {
+public class RegNdsTest extends BaseSetings {
 
     @Test
     @DisplayName("Успешная постановка на учет НДС. Позитивный тест кейс. ")
