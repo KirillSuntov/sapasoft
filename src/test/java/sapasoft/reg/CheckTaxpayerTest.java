@@ -1,4 +1,4 @@
-package sapasoft.adm;
+package sapasoft.reg;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 import io.qameta.allure.junit4.DisplayName;
@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import sapasoft.adm.testconfigs.BaseSetings;
+import sapasoft.reg.testconfigs.BaseSetings;
 
 
 

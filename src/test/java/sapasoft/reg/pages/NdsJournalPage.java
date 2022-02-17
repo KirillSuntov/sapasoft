@@ -1,13 +1,9 @@
-package sapasoft.adm.pages;
+package sapasoft.reg.pages;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selectors;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import sapasoft.adm.testconfigs.BaseSetings;
-
-import java.io.File;
+import sapasoft.reg.testconfigs.BaseSetings;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;

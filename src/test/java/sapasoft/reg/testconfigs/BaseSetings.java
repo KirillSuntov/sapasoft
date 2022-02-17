@@ -1,4 +1,4 @@
-package sapasoft.adm.testconfigs;
+package sapasoft.reg.testconfigs;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Screenshots;
@@ -19,6 +19,7 @@ import java.util.Objects;
 import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.screenshot;
 
 
 public class BaseSetings {
@@ -44,7 +45,7 @@ public class BaseSetings {
         Configuration.baseUrl = "https://arm.sapasoft.kz";
         Configuration.timeout= 8000;
         Configuration.browserSize = "1920x1080";
-        Configuration.headless = true;
+        Configuration.headless = false;
         Configuration.holdBrowserOpen = false;
 
 

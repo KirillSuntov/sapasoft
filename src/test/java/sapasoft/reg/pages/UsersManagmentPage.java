@@ -1,16 +1,12 @@
-package sapasoft.adm.pages;
+package sapasoft.reg.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import io.qameta.allure.Step;
-import io.qameta.allure.junit4.DisplayName;
-import org.junit.FixMethodOrder;
-import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 

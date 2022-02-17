@@ -1,4 +1,4 @@
-package sapasoft.adm.pages;
+package sapasoft.reg.pages;
 
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;

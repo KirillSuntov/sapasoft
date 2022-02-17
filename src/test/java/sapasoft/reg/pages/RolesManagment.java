@@ -1,4 +1,4 @@
-package sapasoft.adm.pages;
+package sapasoft.reg.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;

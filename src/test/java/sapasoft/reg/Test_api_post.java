@@ -1,23 +1,13 @@
-package sapasoft.adm;
+package sapasoft.reg;
 
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.ObjectMapper;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import io.qameta.allure.Step;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Assert;
-import org.junit.Test;
-
-
-import java.util.Arrays;
-import java.util.List;
-
-import java.io.IOException;
 
 public class Test_api_post {
 

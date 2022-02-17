@@ -1,6 +1,6 @@
-package sapasoft.adm.pages;
+package sapasoft.reg.pages;
 
-import sapasoft.adm.testconfigs.BaseSetings;
+import sapasoft.reg.testconfigs.BaseSetings;
 
 public class Adm extends BaseSetings {
     public void logIn(String login, String password){
