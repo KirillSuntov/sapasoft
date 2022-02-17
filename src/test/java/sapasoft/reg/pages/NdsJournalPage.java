@@ -40,6 +40,7 @@ public class NdsJournalPage extends BaseSetings {
     public void chooseCertificate(String IinBin) {
 
         $(byText("Плательщики НДС")).click();
+        $(by("placeholder","Поиск по ИИН/БИН или ФИО/Наименование (минимум 3 символа)")).sendKeys(IinBin);
         $(by("data-row-key","1")).click();
         $(byText("НЗ о регистрационном учете по НДС")).shouldBe(visible);
         $(byText("Выдано свидетельство")).shouldBe(visible);
