@@ -65,6 +65,39 @@ public class RegNdsForcedTest extends BaseSetings {
         screenshot1("Скрин последней страницы");
         pause(1000);
     }
+
+    @Test
+    @DisplayName("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является ФЛ, находящимся в розыске")
+    public void  TestRegNdsForcedCase3() throws UnirestException, IOException {
+
+        String bodyJSON="{\r\n    \"headers\": {\r\n        \"messageUid\": \"" + java.util.UUID.randomUUID() + "\",\r\n        \"messageCreatedDate\": \"2022-01-01 09:34:55\",\r\n        \"operationType\": \"REGISTRATION\"\r\n    },\r\n    \"businessData\": {\r\n        \"taxStatement\": {\r\n            \"registrationType\": 1,\r\n            \"type\": \"1\",\r\n            \"taxOrgCode\": \"6205\",\r\n            \"ndsNzReceiveDate\": \"2022-12-22\",\r\n            \"ndsNzIncomingDate\": \"2022-12-22\",\r\n            \"statementRegReason\": \"REQUIRED\"\r\n        },\r\n        \"taxpayerData\": {\r\n            \"taxpayerCode\": \"159240017082\",\r\n            \"taxpayerType\": \"UL\",\r\n            \"taxpayerName\": {\r\n                \"ru\": \"IP Власова ru\",\r\n                \"kk\": \"IP Власова kk\"\r\n            }\r\n        },\r\n        \"stateAuthorityMark\": {\r\n            \"registrationDate\": \"2020-10-19 19:34:55\",\r\n            \"taxOrgCode\": 6205,\r\n            \"applicationDate\": \"2020-10-19 19:34:55\",\r\n            \"fullName\": \"Иванов П.А.\",\r\n            \"applicantFullName\": \"Кузнецов В.А.\",\r\n            \"applicationNumber\": 10\r\n        }\r\n    }\r\n}";
+        JSONObject Response = new JSONObject(Test_api_post.ndsSaveNz(bodyJSON));
+//        Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
+
+        Adm adm =new Adm();
+        adm.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является ФЛ, находящимся в розыске","159240017082");
+
+        screenshot("123");
+        screenshot1("Скрин последней страницы");
+        pause(1000);
+    }
+
+    @Test
+    @DisplayName("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является бездействующим ИП или ЮЛ")
+    public void  TestRegNdsForcedCase4() throws UnirestException, IOException {
+
+        String bodyJSON="{\r\n    \"headers\": {\r\n        \"messageUid\": \"" + java.util.UUID.randomUUID() + "\",\r\n        \"messageCreatedDate\": \"2022-01-01 09:34:55\",\r\n        \"operationType\": \"REGISTRATION\"\r\n    },\r\n    \"businessData\": {\r\n        \"taxStatement\": {\r\n            \"registrationType\": 1,\r\n            \"type\": \"1\",\r\n            \"taxOrgCode\": \"6205\",\r\n            \"ndsNzReceiveDate\": \"2022-12-22\",\r\n            \"ndsNzIncomingDate\": \"2022-12-22\",\r\n            \"statementRegReason\": \"REQUIRED\"\r\n        },\r\n        \"taxpayerData\": {\r\n            \"taxpayerCode\": \"190540017940\",\r\n            \"taxpayerType\": \"UL\",\r\n            \"taxpayerName\": {\r\n                \"ru\": \"IP Власова ru\",\r\n                \"kk\": \"IP Власова kk\"\r\n            }\r\n        },\r\n        \"stateAuthorityMark\": {\r\n            \"registrationDate\": \"2020-10-19 19:34:55\",\r\n            \"taxOrgCode\": 6205,\r\n            \"applicationDate\": \"2020-10-19 19:34:55\",\r\n            \"fullName\": \"Иванов П.А.\",\r\n            \"applicantFullName\": \"Кузнецов В.А.\",\r\n            \"applicationNumber\": 10\r\n        }\r\n    }\r\n}";
+        JSONObject Response = new JSONObject(Test_api_post.ndsSaveNz(bodyJSON));
+//        Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
+
+        Adm adm =new Adm();
+        adm.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является бездействующим ИП или ЮЛ","190540017940");
+
+        screenshot("123");
+        screenshot1("Скрин последней страницы");
+        pause(1000);
+    }
+
 //    @Test
     @DisplayName("Не найден налогоплательщик")
     public void  TestRegNdsCase2() throws UnirestException {
