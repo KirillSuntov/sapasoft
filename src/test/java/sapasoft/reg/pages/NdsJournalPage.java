@@ -64,6 +64,8 @@ public class NdsJournalPage extends BaseSetings {
         adm.ndsJournal().open();
 
         adm.ndsJournal().chooseCertificate(IinBin);
+
+        $(byText(expectedCause)).shouldBe(visible);
 //        $$(By.className("mb-disable")).get(1).shouldBe(text("Регистрационные сведения")).click();
 //        $(byText(expectedCause)).shouldBe(visible);
     }
