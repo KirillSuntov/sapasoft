@@ -39,7 +39,7 @@ public class Test_api_post {
         System.out.println(response.getStatus());
         if (response.getStatus() == 200 || response.getStatus() == 400) {
             return response.getBody();
-        } else Assert.fail("Статус ответа: "+response.getStatus());
+        } else Assert.fail("Статус ответа: "+response.getStatus()+"\n"+"respons body: "+response.getBody());
 //       System.out.println(response.getBody());
         return response.getBody();
     }
