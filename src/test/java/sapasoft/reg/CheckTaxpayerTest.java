@@ -127,25 +127,25 @@ public class CheckTaxpayerTest extends BaseSetings {
     }
 
     @Test
-    @DisplayName("Сообщение не может быть обработано, так как поле iinBin заполнено не корректно. Длина поля не должна быть меньше 12 символов и больше 12 символов")
+    @DisplayName("Сообщение не может быть обработано, так как обязательное поле iinBin не заполнено")
     public void TestCheckTaxpayerCase8() throws UnirestException {
 
         String bodyJSON="{\"iinBin\":\"\",\n" +
                 "\"ogdCode\":\"6205\",\n" +
                 "\"taxpayerType\":\"UL\",\n" +
                 "\"operationType\":\"REGISTRATION\"}";
-        String expectedRejectCause="Сообщение не может быть обработано, так как поле iinBin заполнено не корректно. Длина поля не должна быть меньше 12 символов и больше 12 символов";
+        String expectedRejectCause="Сообщение не может быть обработано, так как обязательное поле iinBin не заполнено";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
         Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
     }
 
     @Test
-    @DisplayName("Сообщение не может быть обработано, так как поле ogdCode не соответствует формату")
+    @DisplayName("Сообщение не может быть обработано, так как обязательное поле ogdCode не заполнено")
     public void TestCheckTaxpayerCase9() throws UnirestException {
 
         String bodyJSON="{ \"iinBin\": \"500101300101\", \"ogdCode\": \"\", \"taxpayerType\": \"IP\", \"operationType\": \"REGISTRATION\" }";
-        String expectedRejectCause="Сообщение не может быть обработано, так как поле ogdCode не соответствует формату";
+        String expectedRejectCause="Сообщение не может быть обработано, так как обязательное поле ogdCode не заполнено";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
         Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);

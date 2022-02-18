@@ -132,7 +132,7 @@ int Cell=0;
         pause(1000);
     }
 
-    @Test
+//    @Test
     @DisplayName("Пример ошибки")
     public void  TestRegNdsCase5() throws UnirestException {
 

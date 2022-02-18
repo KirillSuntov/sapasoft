@@ -33,6 +33,7 @@ public class NdsJournalPage extends BaseSetings {
         $(By.className("ant-select-selection-overflow")).click();
         $(By.className("ant-select-selection-search-input")).sendKeys(IinBin);
         $(By.className("ant-select-selection-search-input")).sendKeys(Keys.ENTER);
+        pause(1000);
         $(by("data-row-key","1")).click();
     }
 
