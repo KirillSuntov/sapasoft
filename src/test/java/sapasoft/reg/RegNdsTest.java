@@ -34,7 +34,6 @@ public class RegNdsTest extends BaseSetings {
 
         adm.ndsJournal().checkCertificate("Выдано свидетельство","430216434014");
 
-
        NdsJournalPage.getCellText("Вид документа основания","НЗ о регистрационном учете по НДС",1);
 
         screenshot("123");
