@@ -18,7 +18,7 @@ public class NdsJournalPage extends BaseSetings {
 
     }
 
-//    @Step("Выбрать период времени доступа")
+    //    @Step("Выбрать период времени доступа")
 //    public void choosePeriod(String dateFrom) {
 //        $(By.xpath("//label[text()=\"Период времени доступа\"]/../../div[2]//input[@placeholder=\"С\"]")).click();
 //        //$(By.xpath("//label[text()=\"Период времени доступа\"]/../../div[2]//input[@placeholder=\"С\"]")).sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.DELETE);
@@ -34,15 +34,30 @@ public class NdsJournalPage extends BaseSetings {
         $(By.className("ant-select-selection-search-input")).sendKeys(IinBin);
         $(By.className("ant-select-selection-search-input")).sendKeys(Keys.ENTER);
         pause(1000);
-        $(by("data-row-key","1")).click();
+        $(by("data-row-key", "1")).click();
     }
+
+    @Step("Получение информации из таблици, столбец: {0}")
+    public static String getCellText(String tablethead, int rowNumber) {
+        int Cell = 0;
+
+        for (int i = 0; i < $(By.className("ant-modal-body")).$(By.className("ant-table-thead")).$$(By.className("ant-table-cell")).size(); i++) {
+            if (($(By.className("ant-modal-body")).$(By.className("ant-table-thead")).$$(By.className("ant-table-cell")).get(i).getText()).equals(tablethead)) {
+                System.out.println("порядковый номер: " + i);
+                Cell = i;
+            }
+        }
+
+        return $(By.className("ant-modal-body")).$("[class*=ant-table-row-level-0]").$$(By.className("ant-table-cell")).get(Cell).getText();
+    }
+
 
     @Step("Выбрать запись в журнале НДС, вкладка \"Плательшики НДС\" по ИИН/БИН")
     public void chooseCertificate(String IinBin) {
 
         $(byText("Плательщики НДС")).click();
-        $(by("placeholder","Поиск по ИИН/БИН или ФИО/Наименование (минимум 3 символа)")).sendKeys(IinBin);
-        $(by("data-row-key","1")).click();
+        $(by("placeholder", "Поиск по ИИН/БИН или ФИО/Наименование (минимум 3 символа)")).sendKeys(IinBin);
+        $(by("data-row-key", "1")).click();
         $(byText("НЗ о регистрационном учете по НДС")).shouldBe(visible);
         $(byText("Выдано свидетельство")).shouldBe(visible);
 
@@ -50,7 +65,7 @@ public class NdsJournalPage extends BaseSetings {
 
     @Step("Фронт. Проверка ответа в журнале сообщений по постановке на учет по НДС. Ожидаемый ответ: {0}")
     public void checkMessage(String expectedRejectCause, String IinBin) {
-        Adm adm =new Adm();
+        Adm adm = new Adm();
         adm.logIn(login, password);
         adm.ndsJournal().open();
 
@@ -61,7 +76,7 @@ public class NdsJournalPage extends BaseSetings {
 
     @Step("Фронт. Проверка ответа в журнале сообщений по постановке на учет по НДС. Ожидаемый ответ: {0}")
     public void checkCertificate(String expectedCause, String IinBin) {
-        Adm adm =new Adm();
+        Adm adm = new Adm();
         adm.logIn(login, password);
         adm.ndsJournal().open();
 
