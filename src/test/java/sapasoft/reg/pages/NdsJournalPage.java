@@ -43,7 +43,7 @@ public class NdsJournalPage extends BaseSetings {
         int Cell = 0;
 
         for (int i = 0; i < $(By.className("ant-modal-body")).$(By.className("ant-table-thead")).$$(By.className("ant-table-cell")).size(); i++) {
-            if (($(By.className("ant-modal-body")).$$(By.className("ant-table-thead")).get(rowNumber).$$(By.className("ant-table-cell")).get(i).getText()).equals(tablethead)) {
+            if (($$(By.className("ant-modal-body")).get(rowNumber).$(By.className("ant-table-thead")).$$(By.className("ant-table-cell")).get(i).getText()).equals(tablethead)) {
                 System.out.println("порядковый номер: " + i);
                 Cell = i;
             }
