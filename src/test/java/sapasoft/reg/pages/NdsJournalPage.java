@@ -1,6 +1,7 @@
 package sapasoft.reg.pages;
 
 import io.qameta.allure.Step;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import sapasoft.reg.testconfigs.BaseSetings;
@@ -37,8 +38,8 @@ public class NdsJournalPage extends BaseSetings {
         $(by("data-row-key", "1")).click();
     }
 
-    @Step("Получение информации из таблици, столбец: {0}")
-    public static String getCellText(String tablethead, int rowNumber) {
+    @Step("Проверка значения, столбец: {0}")
+    public static Boolean getCellText(String tablethead, String expectedCellText, int rowNumber) {
         int Cell = 0;
 
         for (int i = 0; i < $(By.className("ant-modal-body")).$(By.className("ant-table-thead")).$$(By.className("ant-table-cell")).size(); i++) {
@@ -48,7 +49,16 @@ public class NdsJournalPage extends BaseSetings {
             }
         }
 
-        return $(By.className("ant-modal-body")).$("[class*=ant-table-row-level-0]").$$(By.className("ant-table-cell")).get(Cell).getText();
+        if (expectedCellText.equals($(By.className("ant-modal-body")).$("[class*=ant-table-row-level-0]").$$(By.className("ant-table-cell")).get(Cell).getText())) {
+            return true;
+
+        } else {
+            Assert.fail("Ответ не соответствует ожидаемому");
+
+            return false;
+        }
+
+
     }
 
 
