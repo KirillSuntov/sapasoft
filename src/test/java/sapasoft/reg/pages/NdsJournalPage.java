@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import sapasoft.reg.testconfigs.BaseSetings;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -39,7 +41,7 @@ public class NdsJournalPage extends BaseSetings {
     }
 
     @Step("Проверка значений.  \n Столбец: {0}\n Значение: {1}")
-    public static Boolean getCellText(String tablethead, String expectedCellText, int rowNumber) {
+    public static Boolean getCellText(String tablethead, String expectedCellText, int rowNumber) throws IOException {
         int Cell = 0;
 
         for (int i = 0; i < $(By.className("ant-modal-body")).$(By.className("ant-table-thead")).$$(By.className("ant-table-cell")).size(); i++) {
@@ -53,6 +55,8 @@ public class NdsJournalPage extends BaseSetings {
             return true;
 
         } else {
+            screenshot("123");
+            screenshot1("Скрин последней страницы");
             Assert.fail("Ответ не соответствует ожидаемому");
 
             return false;
