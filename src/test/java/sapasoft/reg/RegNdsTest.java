@@ -22,8 +22,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegNdsTest extends BaseSetings {
 
-    @Test
-
+//    @Test
     public void  CellTest() throws UnirestException, IOException {
 
         String bodyJSON="{\r\n    \"headers\": {\r\n        \"messageUid\": \"" + java.util.UUID.randomUUID() + "\",\r\n        \"messageCreatedDate\": \"2022-01-01 09:34:55\",\r\n        \"operationType\": \"REGISTRATION\"\r\n    },\r\n    \"businessData\": {\r\n        \"taxStatement\": {\r\n            \"registrationType\": 1,\r\n            \"type\": \"1\",\r\n            \"taxOrgCode\": \"6205\",\r\n            \"ndsNzReceiveDate\": \"2022-12-22\",\r\n            \"ndsNzIncomingDate\": \"2022-12-22\",\r\n            \"statementRegReason\": \"REQUIRED\"\r\n        },\r\n        \"taxpayerData\": {\r\n            \"taxpayerCode\": \"430216434014\",\r\n            \"taxpayerType\": \"IP\",\r\n            \"taxpayerName\": {\r\n                \"ru\": \"IP Власова ru\",\r\n                \"kk\": \"IP Власова kk\"\r\n            }\r\n        },\r\n        \"stateAuthorityMark\": {\r\n            \"registrationDate\": \"2020-10-19 19:34:55\",\r\n            \"taxOrgCode\": 6205,\r\n            \"applicationDate\": \"2020-10-19 19:34:55\",\r\n            \"fullName\": \"Иванов П.А.\",\r\n            \"applicantFullName\": \"Кузнецов В.А.\",\r\n            \"applicationNumber\": 10\r\n        }\r\n    }\r\n}";
@@ -55,7 +54,8 @@ public class RegNdsTest extends BaseSetings {
         Adm adm =new Adm();
 
         adm.ndsJournal().checkCertificate("Выдано свидетельство","430216434014");
-
+        NdsJournalPage.getCellText("Вид документа основания","НЗ о регистрационном учете по НДС",0);
+        NdsJournalPage.getCellText("Вид документа основания","Решение ОГД о снятии с НДС",1);
         screenshot("123");
         screenshot1("Скрин последней страницы");
 

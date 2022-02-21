@@ -38,7 +38,7 @@ public class NdsJournalPage extends BaseSetings {
         $(by("data-row-key", "1")).click();
     }
 
-    @Step("Проверка значения, столбец: {0}")
+    @Step("Проверка значений.  \n Столбец: {0}\n Значение: {1}")
     public static Boolean getCellText(String tablethead, String expectedCellText, int rowNumber) {
         int Cell = 0;
 
