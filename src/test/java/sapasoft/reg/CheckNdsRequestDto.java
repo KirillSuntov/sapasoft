@@ -1,4 +1,4 @@
-package sapasoft.reg.nds;
+package sapasoft.reg;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
