@@ -75,4 +75,9 @@ public class Adm extends BaseSetings {
         NdsJournalPage ndsJournalPage = new NdsJournalPage();
         return ndsJournalPage;
     }
+
+    public ProcessingLogPage processingLogPage (){
+        ProcessingLogPage processingLogPage = new ProcessingLogPage();
+        return processingLogPage;
+    }
 }
