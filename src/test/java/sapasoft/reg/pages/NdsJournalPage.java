@@ -55,8 +55,7 @@ public class NdsJournalPage extends BaseSetings {
             return true;
 
         } else {
-            screenshot("123");
-            screenshot1("Скрин последней страницы");
+
             Assert.fail("Ответ не соответствует ожидаемому");
 
             return false;

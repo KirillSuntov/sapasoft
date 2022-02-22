@@ -1,4 +1,4 @@
-package sapasoft.reg;
+package sapasoft.reg.nds;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 import io.qameta.allure.junit4.DisplayName;

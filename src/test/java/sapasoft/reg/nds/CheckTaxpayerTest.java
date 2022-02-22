@@ -1,4 +1,4 @@
-package sapasoft.reg;
+package sapasoft.reg.nds;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 import io.qameta.allure.junit4.DisplayName;
@@ -134,7 +134,7 @@ public class CheckTaxpayerTest extends BaseSetings {
                 "\"ogdCode\":\"6205\",\n" +
                 "\"taxpayerType\":\"UL\",\n" +
                 "\"operationType\":\"REGISTRATION\"}";
-        String expectedRejectCause="Сообщение не может быть обработано, так как обязательное поле iinBin не заполнено";
+        String expectedRejectCause="Сообщение не может быть обработано, так как поле iinBin заполнено не корректно. Длина поля не должна быть меньше 12 символов и больше 12 символов";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
         Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
