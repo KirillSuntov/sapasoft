@@ -24,12 +24,12 @@ public class ProcessingLogTest extends BaseSetings {
 
     @DisplayName("Поиск пользователя")
     @Test
-    public void t1Search(){
-        Adm adm= new Adm();
+    public void t1Search() {
+        Adm adm = new Adm();
         adm.logIn(login, password);
         adm.processingLogPage().open();
         adm.processingLogPage().advancedSearch();
-
+    }
 //
 //    @DisplayName("Расширеный поиск пользователя по статусу")
 //    @Test
