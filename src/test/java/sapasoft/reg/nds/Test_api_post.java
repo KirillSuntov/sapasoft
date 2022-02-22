@@ -1,4 +1,4 @@
-package sapasoft.reg;
+package sapasoft.reg.nds;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;

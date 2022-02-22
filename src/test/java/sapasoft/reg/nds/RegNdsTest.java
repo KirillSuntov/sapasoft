@@ -1,20 +1,17 @@
-package sapasoft.reg;
+package sapasoft.reg.nds;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 import io.qameta.allure.junit4.DisplayName;
 import org.json.JSONObject;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
 import sapasoft.reg.pages.Adm;
 import sapasoft.reg.pages.NdsJournalPage;
 import sapasoft.reg.testconfigs.BaseSetings;
 
 import java.io.IOException;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
