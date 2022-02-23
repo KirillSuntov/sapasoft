@@ -9,7 +9,7 @@ import sapasoft.reg.pages.Reg;
 import sapasoft.reg.testconfigs.BaseSetings;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@DisplayName("Smoke тест: проверка разделов регисрации")
+@DisplayName("Smoke тест: проверка разделов регистрации")
 public class RegSmokeTest extends BaseSetings {
 
 
@@ -17,7 +17,7 @@ public class RegSmokeTest extends BaseSetings {
     @Test
     public void ProcessingLogSmoke() {
         Reg reg = new Reg();
-
+        reg.logIn(login, password);
         reg.processingLogPage().open();
     }
 
@@ -25,7 +25,7 @@ public class RegSmokeTest extends BaseSetings {
     @Test
     public void NpJournalSmoke() {
         Reg reg = new Reg();
-
+        reg.logIn(login, password);
         reg.npJournalPage().open();
     }
 
@@ -33,7 +33,7 @@ public class RegSmokeTest extends BaseSetings {
     @Test
     public void TaxRegimeJournalSmoke() {
         Reg reg = new Reg();
-
+        reg.logIn(login, password);
         reg.taxRegimeJournalPage().open();
     }
 
@@ -41,7 +41,7 @@ public class RegSmokeTest extends BaseSetings {
     @Test
     public void NdsJournalSmoke() {
         Reg reg = new Reg();
-
+        reg.logIn(login, password);
         reg.ndsJournal().open();
     }
 
@@ -49,7 +49,7 @@ public class RegSmokeTest extends BaseSetings {
     @Test
     public void OvdJournalSmoke() {
         Reg reg = new Reg();
-
+        reg.logIn(login, password);
         reg.ovdJournalPage().open();
     }
 }
