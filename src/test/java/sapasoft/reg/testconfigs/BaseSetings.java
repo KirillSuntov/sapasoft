@@ -45,7 +45,7 @@ public class BaseSetings {
         Configuration.baseUrl = "https://arm.sapasoft.kz";
         Configuration.timeout= 8000;
         Configuration.browserSize = "1920x1080";
-        Configuration.headless = true;
+        Configuration.headless = false;
         Configuration.holdBrowserOpen = false;
 
 
@@ -88,7 +88,7 @@ public class BaseSetings {
     }
 
     @Attachment(value = "Снимок", type = "image/png")
-    public byte[] screenshot1(String str) throws IOException, NullPointerException {
+    public static byte[] screenshot1(String str) throws IOException, NullPointerException {
         File screenshot = Screenshots.getLastScreenshot();
         close();
 
