@@ -7,6 +7,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import sapasoft.reg.pages.Adm;
+import sapasoft.reg.pages.Reg;
 import sapasoft.reg.testconfigs.BaseSetings;
 
 import java.io.IOException;
@@ -26,8 +27,8 @@ public class RegNdsForcedTest extends BaseSetings {
         JSONObject Response = new JSONObject(Test_api_post.ndsSaveNz(bodyJSON));
 //        Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является умершим (объявленным умершим)","501213300061");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является умершим (объявленным умершим)","501213300061");
 
         screenshot("123");
         screenshot1("Скрин последней страницы");
@@ -42,8 +43,8 @@ public class RegNdsForcedTest extends BaseSetings {
         JSONObject Response = new JSONObject(Test_api_post.ndsSaveNz(bodyJSON));
 //        Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является ФЛ, имеющим непогашенную или неснятую судимость по статьям 192-1, 216, 217 и 222 УК РК от 16.07.97 года","445065308053");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является ФЛ, имеющим непогашенную или неснятую судимость по статьям 192-1, 216, 217 и 222 УК РК от 16.07.97 года","445065308053");
 
         screenshot("123");
         screenshot1("Скрин последней страницы");
@@ -58,8 +59,8 @@ public class RegNdsForcedTest extends BaseSetings {
         JSONObject Response = new JSONObject(Test_api_post.ndsSaveNz(bodyJSON));
 //        Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является недееспособным или ограничено недееспособным или безвестно отсутствующим ФЛ","550814435487");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является недееспособным или ограничено недееспособным или безвестно отсутствующим ФЛ","550814435487");
 
         screenshot("123");
         screenshot1("Скрин последней страницы");
@@ -74,8 +75,8 @@ public class RegNdsForcedTest extends BaseSetings {
         JSONObject Response = new JSONObject(Test_api_post.ndsSaveNz(bodyJSON));
 //        Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является ФЛ, находящимся в розыске","159240017082");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является ФЛ, находящимся в розыске","159240017082");
 
         screenshot("123");
         screenshot1("Скрин последней страницы");
@@ -90,8 +91,8 @@ public class RegNdsForcedTest extends BaseSetings {
         JSONObject Response = new JSONObject(Test_api_post.ndsSaveNz(bodyJSON));
 //        Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является бездействующим ИП или ЮЛ","190540017940");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkCertificate("Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является бездействующим ИП или ЮЛ","190540017940");
 
         screenshot("123");
         screenshot1("Скрин последней страницы");
@@ -110,8 +111,8 @@ public class RegNdsForcedTest extends BaseSetings {
 
         Test_api_post.ndsSaveNzResponseCheck(Response,expectedRejectCause);
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkMessage(expectedRejectCause, "880218458813");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkMessage(expectedRejectCause, "880218458813");
         pause(1000);
     }
 

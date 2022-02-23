@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import sapasoft.reg.pages.Adm;
 import sapasoft.reg.pages.NdsJournalPage;
+import sapasoft.reg.pages.Reg;
 import sapasoft.reg.testconfigs.BaseSetings;
 
 import java.io.IOException;
@@ -26,11 +27,11 @@ public class RegNdsTest extends BaseSetings {
         JSONObject Response = new JSONObject(Test_api_post.ndsSaveNz(bodyJSON));
 //        Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
 
-        Adm adm =new Adm();
-
-        adm.ndsJournal().checkCertificate("Выдано свидетельство","430216434014");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkCertificate("Выдано свидетельство","430216434014");
         NdsJournalPage.getCellText("Вид документа основания","НЗ о регистрационном учете по НДС",0);
         NdsJournalPage.getCellText("Вид документа основания","Решение ОГД о снятии с НДС",1);
+
 
 
         screenshot("123");
@@ -47,9 +48,8 @@ public class RegNdsTest extends BaseSetings {
         JSONObject Response = new JSONObject(Test_api_post.ndsSaveNz(bodyJSON));
 //        Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
 
-        Adm adm =new Adm();
-
-        adm.ndsJournal().checkCertificate("Выдано свидетельство","430216434014");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkCertificate("Выдано свидетельство","430216434014");
         NdsJournalPage.getCellText("Вид документа основания","НЗ о регистрационном учете по НДС",0);
         NdsJournalPage.getCellText("Вид документа основания","Решение ОГД о снятии с НДС",1);
         NdsJournalPage.getCellText("Событие","Выдано свидетельство",0);
@@ -71,8 +71,8 @@ public class RegNdsTest extends BaseSetings {
         JSONObject Response = new JSONObject(Test_api_post.ndsSaveNz(bodyJSON));
         Test_api_post.ndsSaveNzResponseCheck(Response,"Налогоплательщик является действующим плательщиком НДС");
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkMessage("Налогоплательщик является действующим плательщиком НДС","430216434014");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkMessage("Налогоплательщик является действующим плательщиком НДС","430216434014");
         pause(1000);
     }
 
@@ -88,8 +88,8 @@ public class RegNdsTest extends BaseSetings {
 
         Test_api_post.ndsSaveNzResponseCheck(Response,expectedRejectCause);
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkMessage(expectedRejectCause, "880218458813");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkMessage(expectedRejectCause, "880218458813");
         pause(1000);
     }
 
@@ -105,8 +105,8 @@ public class RegNdsTest extends BaseSetings {
 
         Test_api_post.ndsSaveNzResponseCheck(Response,expectedRejectCause);
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkMessage(expectedRejectCause, "140950029062");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkMessage(expectedRejectCause, "140950029062");
         pause(1000);
     }
 
@@ -122,8 +122,8 @@ public class RegNdsTest extends BaseSetings {
 
         Test_api_post.ndsSaveNzResponseCheck(Response,expectedRejectCause);
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkMessage(expectedRejectCause, "930122450268");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkMessage(expectedRejectCause, "930122450268");
         pause(1000);
     }
 
@@ -139,8 +139,8 @@ public class RegNdsTest extends BaseSetings {
 
         Test_api_post.ndsSaveNzResponseCheck(Response,expectedRejectCause);
 
-        Adm adm =new Adm();
-        adm.ndsJournal().checkMessage(expectedRejectCause, "9301224502268");
+        Reg reg =new Reg();
+        reg.ndsJournal().checkMessage(expectedRejectCause, "9301224502268");
         pause(1000);
     }
 }

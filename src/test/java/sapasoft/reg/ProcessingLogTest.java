@@ -5,6 +5,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import sapasoft.reg.pages.Adm;
+import sapasoft.reg.pages.Reg;
 import sapasoft.reg.testconfigs.BaseSetings;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -25,10 +26,10 @@ public class ProcessingLogTest extends BaseSetings {
     @DisplayName("Поиск пользователя")
     @Test
     public void t1Search() {
-        Adm adm = new Adm();
-        adm.logIn(login, password);
-        adm.processingLogPage().open();
-        adm.processingLogPage().advancedSearch();
+        Reg reg = new Reg();
+        reg.logIn(login, password);
+        reg.processingLogPage().open();
+        reg.processingLogPage().advancedSearch();
     }
 //
 //    @DisplayName("Расширеный поиск пользователя по статусу")
