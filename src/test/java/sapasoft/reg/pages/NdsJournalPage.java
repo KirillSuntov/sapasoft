@@ -78,22 +78,22 @@ public class NdsJournalPage extends BaseSetings {
 
     @Step("Фронт. Проверка ответа в журнале сообщений по постановке на учет по НДС. Ожидаемый ответ: {0}")
     public void checkMessage(String expectedRejectCause, String IinBin) {
-        Adm adm = new Adm();
-        adm.logIn(login, password);
-        adm.ndsJournal().open();
+        Reg reg = new Reg();
+        reg.logIn(login, password);
+        reg.ndsJournal().open();
 
-        adm.ndsJournal().chooseMessage(IinBin);
+        reg.ndsJournal().chooseMessage(IinBin);
         $$(By.className("mb-disable")).get(1).shouldBe(text("Регистрационные сведения")).click();
         $(byText(expectedRejectCause)).shouldBe(visible);
     }
 
     @Step("Фронт. Проверка ответа в журнале сообщений по постановке на учет по НДС. Ожидаемый ответ: {0}")
     public void checkCertificate(String expectedCause, String IinBin) {
-        Adm adm = new Adm();
-        adm.logIn(login, password);
-        adm.ndsJournal().open();
+        Reg reg = new Reg();
+        reg.logIn(login, password);
+        reg.ndsJournal().open();
 
-        adm.ndsJournal().chooseCertificate(IinBin);
+        reg.ndsJournal().chooseCertificate(IinBin);
         $(byText("Снят с учета")).shouldBe(visible);
         $(byText(expectedCause)).shouldBe(visible);
 //        $$(By.className("mb-disable")).get(1).shouldBe(text("Регистрационные сведения")).click();
