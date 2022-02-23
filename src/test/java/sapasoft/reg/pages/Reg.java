@@ -64,4 +64,9 @@ public class Reg extends BaseSetings {
         return npJournalPage;
     }
 
+    public BasePage basePage (){
+        BasePage basePage = new BasePage();
+        return basePage;
+    }
+
 }
