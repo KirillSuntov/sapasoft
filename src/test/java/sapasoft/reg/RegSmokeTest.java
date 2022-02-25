@@ -20,6 +20,9 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.processingLogPage().open();
         reg.basePage().checkTitle("Журнал обработки сообщений");
+        reg.processingLogPage().advancedSearch();
+        reg.processingLogPage().advancedSearch_NP_Choose("ИП");
+        reg.processingLogPage().advancedSearch_Apply();
     }
 
     @DisplayName("Проверка раздела Реестр налогоплательщиков")
