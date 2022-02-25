@@ -23,7 +23,7 @@ public class Auth extends BaseSetings {
         $(By.xpath("//input[@id=\"kc-login\"]")).click();
        // $(By.xpath("//button[@id=\"proceed-button\"]")).click();
         //refresh();
-        $(By.xpath("//h1[text()=\"Главная\"]")).shouldBe(Condition.visible);
+        $(By.xpath("//h1[text()=\"Главная\"]")).waitUntil(Condition.visible,10000);
         $(By.xpath("//div[text()=\"АРМ ОГД\"]")).click();
       $(byText("Регистрация НП и ККМ")).click();
         pause(5000);

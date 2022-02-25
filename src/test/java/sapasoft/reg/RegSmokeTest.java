@@ -20,6 +20,15 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.processingLogPage().open();
         reg.basePage().checkTitle("Журнал обработки сообщений");
+        reg.processingLogPage().advancedSearch();
+        reg.processingLogPage().advancedSearch_Choose_NP("ИП");
+        reg.processingLogPage().advancedSearch_Choose_Status("Ошибочное");
+        reg.processingLogPage().advancedSearch_Choose_MsgType("Исходящее");
+        reg.processingLogPage().advancedSearch_Choose_MsgSource("ГБД ЕЛ");
+        reg.processingLogPage().advancedSearch_Choose_OperationType("Актуализация");
+        reg.processingLogPage().advancedSearch_Choose_CodeTypeMsg("Ответ со статусом обработки сообщения с уведомлением о начале деятельности в качестве ИП/об изменении сведений ИП");
+
+        reg.processingLogPage().advancedSearch_Apply();
     }
 
     @DisplayName("Проверка раздела Реестр налогоплательщиков")
