@@ -1,14 +1,8 @@
 package sapasoft.reg.pages;
 
 import io.qameta.allure.Step;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import sapasoft.reg.testconfigs.BaseSetings;
 
-import java.io.IOException;
-
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -93,7 +87,7 @@ public class ProcessingLogPage extends BaseSetings {
     }
 
     @Step("Проверка статуса сообщения с поисковым статусом")
-    public void Check_Equality_Of_Status_To_Search() {
+    public boolean Check_Equality_Of_Status_To_Search() {
        /*System.out.println("CHECK START: ");
         System.out.println("II: " + $(byClassName("ant-table-tbody")).$$(byClassName("ant-table-row")).get(1));
         System.out.println("III: " + $(byClassName("ant-table-tbody")).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")));
@@ -106,8 +100,17 @@ public class ProcessingLogPage extends BaseSetings {
             System.out.println("I = " + i + " : " + $$(byClassName("ant-table-tbody")).get(i).$(byClassName("ant-table-row ant-table-row-level-0")));
 
         }*/
-        $$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(6).getText().equals(this.Msg_Status);
-        pause(3000);
+    this.Msg_Status = "3333";
+        System.out.println("MSG_Status: " + this.Msg_Status);
+        System.out.println("STATUS: " + $$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(6).getText());
+        if($$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(6).getText() == (this.Msg_Status)){
+            System.out.println("TRUE");
+            return true;
+        }
+        else{
+            System.out.println("FALSE");
+            return false;
+        }
     }
 
 }

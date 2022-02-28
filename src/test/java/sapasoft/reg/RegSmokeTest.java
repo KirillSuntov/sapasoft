@@ -1,6 +1,7 @@
 package sapasoft.reg;
 
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -28,7 +29,12 @@ public class RegSmokeTest extends BaseSetings {
         reg.processingLogPage().advancedSearch_Choose_OperationType("Регистрация");
         //reg.processingLogPage().advancedSearch_Choose_CodeTypeMsg("Сообщение  о постановке на регистрационный учёт в качестве ЮЛ (филиала, представительства)");
         reg.processingLogPage().advancedSearch_Apply();
-        reg.processingLogPage().Check_Equality_Of_Status_To_Search();
+        if(reg.processingLogPage().Check_Equality_Of_Status_To_Search()){
+            System.out.println("WTF");
+        }
+        else{
+            Assert.fail("Ответ не соответствует ожидаемому");
+        };
     }
 
     @DisplayName("Проверка раздела Реестр налогоплательщиков")
