@@ -1,6 +1,5 @@
 package sapasoft.reg.pages;
 
-import com.codeborne.selenide.CollectionCondition;
 import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -9,14 +8,13 @@ import sapasoft.reg.testconfigs.BaseSetings;
 
 import java.io.IOException;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ProcessingLogPage extends BaseSetings {
 
+    public static String Msg_Status;
 
     @Step("Открыть раздел Журнал обработки сообщений")
     public void open() {
@@ -33,16 +31,6 @@ public class ProcessingLogPage extends BaseSetings {
 //        $(by("data-row-key", "1")).click();
     }
 
-    @Step("Поиск ИП в расширенном поиске")
-    public void advancedSearchFL() {
-        //$(byClassName("ant-select antd-pro-components-select-select-select ant-select-single ant-select-show-arrow")).click();
-        $(byXpath("//*[@id=\"searchByParameters\"]/div[2]/div/div/div/div/form/div[1]/div[1]/div/div[2]/div/div/div/div")).$(byClassName("ant-select-selection-item")).click();
-        $(byClassName("rc-virtual-list-holder-inner")).$(byText("ИП")).click();
-        $(byText("Применить")).click();
-        $(byClassName("ant-table-tbody")).shouldBe(visible);
-        pause(3000);
-    }
-
     @Step("Расширенный поиск выбор НП")
     public void advancedSearch_Choose_NP(String np) {
         //$(byClassName("ant-select antd-pro-components-select-select-select ant-select-single ant-select-show-arrow")).click();
@@ -52,12 +40,13 @@ public class ProcessingLogPage extends BaseSetings {
         //pause(3000);
     }
 
-    @Step("Расширенный поиск выбор Статус сообщения")
+    @Step("Расширенный поиск выбор Статус сообщения: {0}")
     public void advancedSearch_Choose_Status(String status) {
         //$(byClassName("ant-select antd-pro-components-select-select-select ant-select-single ant-select-show-arrow")).click();
         //$(byXpath("//*[@id=\"searchByParameters\"]/div[2]/div/div/div/div/form/div[1]/div[2]/div/div[2]/div/div/div/div/div")).click();
         $(byId("messageStatus")).click();
         $$(byClassName("rc-virtual-list-holder-inner")).get(1).$(byText(status)).click();
+        this.Msg_Status = status;
         //pause(3000);
     }
 
@@ -103,6 +92,25 @@ public class ProcessingLogPage extends BaseSetings {
         pause(3000);
     }
 
+    @Step("Проверка статуса сообщения с поисковым статусом")
+    public void Check_Equality_Of_Status_To_Search() {
+       /*System.out.println("CHECK START: ");
+        System.out.println("II: " + $(byClassName("ant-table-tbody")).$$(byClassName("ant-table-row")).get(1));
+        System.out.println("III: " + $(byClassName("ant-table-tbody")).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")));
+        System.out.println("IIII: " + $$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")));
+        System.out.println("IIIII: " + $$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(6));
+        */
+        for(int i = 0; i < $$(byClassName("ant-table-tbody")).size(); i++){
+            /*System.out.println("MSG_Status: " + this.Msg_Status);
+            System.out.println("STATUS: " + $$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(6).getText());
+            */
+            $$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(6).getText().equals(this.Msg_Status);
 
+
+            //$$(byClassName("ant-table-tbody")).get(i).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).equals(Msg_Status);
+            //System.out.println("I = " + i + " : " + $$(byClassName("ant-table-tbody")).get(i).$(byClassName("ant-table-row ant-table-row-level-0")));
+        }
+        pause(3000);
+    }
 
 }
