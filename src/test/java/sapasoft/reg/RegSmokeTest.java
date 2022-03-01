@@ -55,6 +55,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.taxRegimeJournalPage().open();
         reg.basePage().checkTitle("Журнал документов режимов налогообложения");
+        reg.basePage().checkTbody("Журнал документов режимов налогообложения");
     }
 
     @DisplayName("Проверка раздела Журнал НДС")
@@ -64,6 +65,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.ndsJournal().open();
         reg.basePage().checkTitle("Журнал НДС");
+        reg.basePage().checkTbody("Журнал НДС");
     }
 
     @DisplayName("Проверка раздела Журнал ОВД")
@@ -73,6 +75,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.ovdJournalPage().open();
         reg.basePage().checkTitle("Журнал ОВД");
+        reg.basePage().checkTbody("Журнал ОВД");
     }
 
     @DisplayName("Проверка раздела Журнал выдачи сертификатов резидентства")
@@ -82,6 +85,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.sertificatesJournalPage().open();
         reg.basePage().checkTitle("Журнал выдачи сертификатов резидентства");
+        reg.basePage().checkTbody("Журнал выдачи сертификатов резидентства");
     }
 
     @DisplayName("Проверка раздела Конфигуратор дополнительных сведений")
@@ -91,6 +95,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.additionalInfoConfigPage().open();
         reg.basePage().checkTitle("Конфигуратор дополнительных сведений");
+        reg.basePage().checkTbody("Конфигуратор дополнительных сведений");
     }
 
     @DisplayName("Проверка раздела Государственный реестр ККМ")
@@ -100,6 +105,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.kkmRegistryPage().open();
         reg.basePage().checkTitle("Государственный реестр ККМ");
+        reg.basePage().checkTbody("Государственный реестр ККМ");
     }
 
     @DisplayName("Проверка раздела Журнал ККМ")
@@ -109,6 +115,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.kKMJournalPage().open();
         reg.basePage().checkTitle("Журнал ККМ");
+        reg.basePage().checkTbody("Журнал ККМ");
     }
 
     @DisplayName("Проверка раздела Журнал банковских счетов")
@@ -118,6 +125,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.bVUJournalPage().open();
         reg.basePage().checkTitle("Журнал банковских счетов");
+        reg.basePage().checkTbody("Журнал банковских счетов");
     }
 
     @DisplayName("Проверка раздела Журнал корректировки данных налогоплательщиков")
@@ -127,6 +135,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.adjustmentJournalPage().open();
         reg.basePage().checkTitle("Журнал корректировки данных налогоплательщиков");
+        reg.basePage().checkTbody("Журнал корректировки данных налогоплательщиков");
     }
 
 }
