@@ -115,7 +115,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.kKMJournalPage().open();
         reg.basePage().checkTitle("Журнал ККМ");
-        reg.basePage().checkTbody("Журнал ККМ");
+//        reg.basePage().checkTbody("Журнал ККМ");
     }
 
     @DisplayName("Проверка раздела Журнал банковских счетов")
