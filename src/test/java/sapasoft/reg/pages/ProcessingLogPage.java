@@ -107,7 +107,6 @@ public class ProcessingLogPage extends BaseSetings {
             System.out.println("I = " + i + " : " + $$(byClassName("ant-table-tbody")).get(i).$(byClassName("ant-table-row ant-table-row-level-0")));
 
         }*/
-        this.Msg_Status = "SSS";
         if(!$$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(6).getText().equals(this.Msg_Status)){
             Assert.fail("Значение статуса не соответствует выброному в расширенном поиске");
         }
@@ -129,7 +128,6 @@ public class ProcessingLogPage extends BaseSetings {
 
     @Step("Проверка источника сообщения с поисковым статусом")
     public void Check_Equality_Of_MsgSource_To_Search() {
-        this.Msg_Source = "ssss";
         if(!$$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(8).getText().equals(this.Msg_Source)){
             Assert.fail("Значение Источника сообщения не соответствует выброному в расширенном поиске");
         }
@@ -137,7 +135,6 @@ public class ProcessingLogPage extends BaseSetings {
 
     @Step("Проверка Типа операции сообщения с поисковым статусом")
     public void Check_Equality_Of_OperationType_To_Search() {
-        this.Operation_Type = "sssss";
         System.out.println($$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(3).getText());
         System.out.println(this.Operation_Type);
         if(!$$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(3).getText().equals(this.Operation_Type)){
