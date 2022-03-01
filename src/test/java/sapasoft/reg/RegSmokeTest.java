@@ -9,6 +9,8 @@ import sapasoft.reg.pages.Adm;
 import sapasoft.reg.pages.Reg;
 import sapasoft.reg.testconfigs.BaseSetings;
 
+import java.io.IOException;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @DisplayName("Smoke тест: проверка разделов регистрации")
 public class RegSmokeTest extends BaseSetings {
@@ -16,7 +18,7 @@ public class RegSmokeTest extends BaseSetings {
 
     @DisplayName("Проверка раздела Журнал обработки сообщений")
     @Test
-    public void ProcessingLogSmoke() {
+    public void ProcessingLogSmoke() throws IOException {
         Reg reg = new Reg();
         reg.logIn(login, password);
         reg.processingLogPage().open();
