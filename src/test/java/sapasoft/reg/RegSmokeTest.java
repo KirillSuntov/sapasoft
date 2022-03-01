@@ -29,12 +29,11 @@ public class RegSmokeTest extends BaseSetings {
         reg.processingLogPage().advancedSearch_Choose_OperationType("Регистрация");
         //reg.processingLogPage().advancedSearch_Choose_CodeTypeMsg("Сообщение  о постановке на регистрационный учёт в качестве ЮЛ (филиала, представительства)");
         reg.processingLogPage().advancedSearch_Apply();
-        if(reg.processingLogPage().Check_Equality_Of_Status_To_Search()){
-            System.out.println("WTF");
-        }
-        else{
-            Assert.fail("Ответ не соответствует ожидаемому");
-        };
+        reg.processingLogPage().Check_Equality_Of_Status_To_Search();
+        reg.processingLogPage().Check_Equality_Of_MsgType_To_Search();
+        reg.processingLogPage().Check_Equality_Of_MsgSource_To_Search();
+        reg.processingLogPage().Check_Equality_Of_OperationType_To_Search();
+
     }
 
     @DisplayName("Проверка раздела Реестр налогоплательщиков")
