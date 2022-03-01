@@ -157,4 +157,25 @@ public class ProcessingLogPage extends BaseSetings {
 
         }
     }
+
+    @Step("Проверка Типа операции сообщения с поисковым типом")
+    public void Check_Equality_Of_OperationType_To_Search_ByLoop() throws IOException {
+
+        for(int i = 0; i < $$(byClassName("ant-table-thead")).get(0).$$(byClassName("ant-table-cell")).size(); i++){
+
+            if($$(byClassName("ant-table-thead")).get(0).$$(byClassName("ant-table-cell")).get(i).getText().equals("Тип операции")){
+
+                if(!$$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(i).getText().equals(this.Operation_Type)){
+                    screenshot("Operation_Type");
+                    screenshot1("Скрин");
+                    Assert.fail("Значение Тип операции не соответствует выброному в расширенном поиске");
+                }
+
+                else{
+                    break;
+                }
+            }
+        }
+
+    }
 }
