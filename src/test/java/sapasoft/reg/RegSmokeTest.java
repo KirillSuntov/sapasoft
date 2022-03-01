@@ -45,6 +45,7 @@ public class RegSmokeTest extends BaseSetings {
         reg.logIn(login, password);
         reg.npJournalPage().open();
         reg.basePage().checkTitle("Реестр налогоплательщиков");
+        reg.basePage().checkTbody("Реестр налогоплательщиков");
     }
 
     @DisplayName("Проверка раздела Журнал документов режимов налогообложения")
