@@ -4,8 +4,10 @@ import io.qameta.allure.Step;
 import org.junit.Assert;
 import sapasoft.reg.testconfigs.BaseSetings;
 
+import java.awt.*;
 import java.io.IOException;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.screenshot;
@@ -148,8 +150,8 @@ public class ProcessingLogPage extends BaseSetings {
 
     @Step("Проверка Типа операции сообщения с поисковым типом")
     public void Check_Equality_Of_OperationType_To_Search() throws IOException {
-        System.out.println($$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(3).getText());
-        System.out.println(this.Operation_Type);
+        //System.out.println($$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(3).getText());
+        //System.out.println(this.Operation_Type);
         if(!$$(byClassName("ant-table-tbody")).get(0).$(byClassName("ant-table-row")).$$(byClassName("ant-table-cell")).get(3).getText().equals(this.Operation_Type)){
             screenshot("Operation_Type");
             screenshot1("Скрин");
@@ -177,5 +179,21 @@ public class ProcessingLogPage extends BaseSetings {
             }
         }
 
+    }
+
+    @Step("Выбор Мокапа")
+    public void Choose_Mockup(int index) throws IOException {
+        //$(byClassName("ant-table-tbody")).$$(byClassName("ant-table-row-level-0")).get(index).click();
+        $(byClassName("ant-table-tbody")).$(byAttribute("data-row-key", String.valueOf(index))).click();
+        pause(6000);
+    }
+
+    @Step("Проверка Значения строки")
+    public void Check_Value(String chapter, String field, String checkwith) throws IOException {
+        //System.out.println($$(byClassName("antd-pro-components-collapse-index-ovdCollapse")));
+        $(byText(chapter)).click();
+        //System.out.println($(byText(field)).closest("div").closest("div").shouldHave(text("Регистрация")));
+        $(byText(field)).closest("div").closest("div").shouldHave(text(checkwith));
+        pause(6000);
     }
 }

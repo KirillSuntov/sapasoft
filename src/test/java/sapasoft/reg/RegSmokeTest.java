@@ -35,7 +35,8 @@ public class RegSmokeTest extends BaseSetings {
         reg.processingLogPage().Check_Equality_Of_MsgType_To_Search();
         reg.processingLogPage().Check_Equality_Of_MsgSource_To_Search();
         reg.processingLogPage().Check_Equality_Of_OperationType_To_Search_ByLoop();
-
+        reg.processingLogPage().Choose_Mockup(1);
+        reg.processingLogPage().Check_Value("2. Идентификационные сведения","Перевод: Код типа сообщения", "Регистрация");
     }
 
     @DisplayName("Проверка раздела Реестр налогоплательщиков")
