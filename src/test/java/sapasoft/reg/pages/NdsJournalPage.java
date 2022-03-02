@@ -51,7 +51,7 @@ public class NdsJournalPage extends BaseSetings {
             }
         }
 
-        if (expectedCellText.equals($(By.className("ant-modal-body")).$$("[class*=ant-table-row-level-0]").get(rowNumber).$$(By.className("ant-table-cell")).get(Cell).getText())) {
+        if (expectedCellText.equals($(By.className("ant-table-tbody")).$$("[class*=ant-table-row-level-0]").get(rowNumber).$$(By.className("ant-table-cell")).get(Cell).getText())) {
             return true;
 
         } else {
