@@ -50,8 +50,8 @@ public class RegNdsTest extends BaseSetings {
 
         Reg reg =new Reg();
         reg.ndsJournal().checkCertificate("Выдано свидетельство","430216434014");
-        NdsJournalPage.getCellText("Вид документа основания","НЗ о регистрационном учете по НДС",0);
-        NdsJournalPage.getCellText("Вид документа основания","Решение ОГД о снятии с НДС",1);
+//        NdsJournalPage.getCellText("Вид документа основания","НЗ о регистрационном учете по НДС",0);
+//        NdsJournalPage.getCellText("Вид документа основания","Решение ОГД о снятии с НДС",1);
         NdsJournalPage.getCellText("Событие","Выдано свидетельство",0);
         NdsJournalPage.getCellText("Событие","Снят с учета",1);
         NdsJournalPage.getCellText("Основание","Первый руководитель или единственный учредитель (участник) ЮЛ, или ИП является умершим (объявленным умершим)",1);

@@ -145,7 +145,7 @@ public class CheckTaxpayerTest extends BaseSetings {
     public void TestCheckTaxpayerCase9() throws UnirestException {
 
         String bodyJSON="{ \"iinBin\": \"500101300101\", \"ogdCode\": \"\", \"taxpayerType\": \"IP\", \"operationType\": \"REGISTRATION\" }";
-        String expectedRejectCause="Сообщение не может быть обработано, так как обязательное поле ogdCode не заполнено";
+        String expectedRejectCause="Сообщение не может быть обработано, так как поле ogdCode заполнено не корректно. Длина поля не должна быть меньше 4 символов и больше 4 символов";
 
         JSONObject Response = new JSONObject(Test_api_post.CheckTaxpayer(bodyJSON));
         Test_api_post.checkTaxpayerResponseCheck(Response,expectedRejectCause);
