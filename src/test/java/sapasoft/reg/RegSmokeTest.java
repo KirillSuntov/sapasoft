@@ -1,5 +1,6 @@
 package sapasoft.reg;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -18,9 +19,18 @@ public class RegSmokeTest extends BaseSetings {
 
     @DisplayName("Проверка раздела Журнал обработки сообщений")
     @Test
-    public void ProcessingLogSmoke() throws IOException {
+    public void ProcessingLogSmoke() throws IOException, UnirestException {
         Reg reg = new Reg();
+        reg.processingLogPage().RegUl();
         reg.logIn(login, password);
+        reg.processingLogPage().open();
+        reg.basePage().checkTitle("Журнал обработки сообщений");
+        reg.processingLogPage().advancedSearch();
+        reg.processingLogPage().InsertMsgId();
+        reg.processingLogPage().advancedSearch_Apply();
+        reg.processingLogPage().Choose_Mockup(1);
+        reg.processingLogPage().Check_Value("2. Идентификационные сведения","Перевод: Код типа сообщения", "Регистрация");
+        /*reg.logIn(login, password);
         reg.processingLogPage().open();
         reg.basePage().checkTitle("Журнал обработки сообщений");
         reg.processingLogPage().advancedSearch();
@@ -36,7 +46,9 @@ public class RegSmokeTest extends BaseSetings {
         reg.processingLogPage().Check_Equality_Of_MsgSource_To_Search();
         reg.processingLogPage().Check_Equality_Of_OperationType_To_Search_ByLoop();
         reg.processingLogPage().Choose_Mockup(1);
-        reg.processingLogPage().Check_Value("2. Идентификационные сведения","Перевод: Код типа сообщения", "Регистрация");
+        reg.processingLogPage().Check_Value("2. Идентификационные сведения","Перевод: Код типа сообщения", "Регистрация");*/
+
+
     }
 
     @DisplayName("Проверка раздела Реестр налогоплательщиков")
