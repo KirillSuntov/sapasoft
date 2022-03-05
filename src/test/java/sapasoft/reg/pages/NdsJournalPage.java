@@ -56,7 +56,7 @@ public class NdsJournalPage extends BaseSetings {
 
         } else {
 
-            Assert.fail("Ответ не соответствует ожидаемому");
+            Assert.fail("Ответ не соответствует ожидаемому: "+$(By.className("ant-table-tbody")).$$("[class*=ant-table-row-level-0]").get(rowNumber).$$(By.className("ant-table-cell")).get(Cell).getText());
 
             return false;
         }
